@@ -15,36 +15,39 @@
 
     <!-- CSS Personalizado -->
     <link rel="stylesheet" href="/assets/css/style.css">
-
 </head>
 <body>
     <div class="d-flex flex-column vh-100">
-        <!-- Barra superior vermelha -->
-        <div style="background-color: #BF000E; height: 60px;">
-            <img src="/assets/images/Logo.png" alt="iFood" style="height: 40px; margin: 10px;">
-        </div>
-        <div class="container-fluid d-flex justify-content-between align-items-center flex-grow-1">
+        <!-- Header superior vermelha -->
+        <header style="background-color: #BF000E; height: 6%;">
+            <div class="d-flex align-items-center h-100" style="padding-left: 2%;">
+                <a href="https://www.ifood.com.br">
+                    <img src="/assets/images/Logo.png" alt="iFood" class="logo">
+                </a>
+            </div>
+        </header>
+        <main class="container-fluid d-flex justify-content-between align-items-center flex-grow-1">
             <div class="intro-text">
                 <h5 class="text-muted">Verificação em 2 etapas</h5>
                 <h1 style="font-size: 2rem; line-height: 1.5;">Para acessar a sessão financeira, escolha um método de verificação para confirmar que a conta pertence a você.</h1>
             </div>
-            <div class="card p-4 shadow-sm verification-card">
-                <div class="card-option mb-3">
+            <section class="card p-4 shadow-sm verification-card">
+                <div class="card-option mb-3 d-flex align-items-center">
                     <img src="/assets/images/QRCode_Fácil.png" alt="Código QR" style="height: 40px;" class="mr-3">
                     <div>
                         <h5 class="mb-0">Código QR</h5>
                         <p class="text-muted small">Você vai escanear o código QR com o app do iFood.</p>
                     </div>
                 </div>
-                <div class="card-option">
+                <div class="card-option d-flex align-items-center">
                     <img src="/assets/images/Face ID.png" alt="Reconhecimento Facial" style="height: 40px;" class="mr-3">
                     <div>
                         <h5 class="mb-0">Reconhecimento Facial</h5>
                         <p class="text-muted small">Vamos usar a câmera do seu computador para reconhecer seu rosto.</p>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
+        </main>
     </div>
 
     <!-- Bootstrap JS e dependências -->
