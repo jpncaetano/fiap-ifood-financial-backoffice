@@ -1,0 +1,87 @@
+body {
+    background-color: #f5f5f5;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+    /* Remova o margin-left */
+}
+
+.card {
+    border-radius: 10px;
+    border: none;
+}
+
+.text-muted {
+    color: #666 !important;
+}
+
+h5 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+.container-fluid {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.card {
+    margin-right: 50px;
+}
+
+h1 {
+    max-width: 500px;
+}
+
+.card-option {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.card-option:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.card-option img {
+    margin-right: 10px;
+}
+
+.card h5 {
+    margin-bottom: 5px;
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px 80px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.intro-text {
+    max-width: 50%;
+    margin-right: 30px;
+}
+
+.verification-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px 20px;
+    width: 400px;
+    margin-left: 30px;
+}
