@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financeiro - Meu Restaurante</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="/assets/css/visaoGeral.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <img src="/assets/images/Logo.png" alt="iFood" class="logo">
+        <div class="menu">
+            <h3>Meu Restaurante</h3>
+            <div class="menu-item active">Financeiro</div>
+            <div class="submenu">
+                <div class="submenu-item">Visão Geral</div>
+                <div class="submenu-item">Análise de Desempenho</div>
+                <div class="submenu-item">Transações</div>
+                <div class="submenu-item">NF-e</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <div class="main-content">
+        <h1>Financeiro</h1>
+
+        <!-- Cards principais -->
+        <div class="card-container">
+            <div class="card">
+                <h2>Valor a Receber</h2>
+                <p>Total</p>
+                <h3>R$18.458,58</h3>
+            </div>
+            <div class="card">
+                <h2>Repasse de Hoje</h2>
+                <p>Total</p>
+                <h3>R$1.458,58</h3>
+            </div>
+            <div class="card">
+                <h2>Repasse Agendado</h2>
+                <p>Total</p>
+                <h3>R$4.325,65</h3>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <h2>Receita Total</h2>
+                <h3>R$25.000,00</h3>
+                <p>Variação: +10%</p>
+            </div>
+            <div class="card">
+                <h2>Despesas Operacionais</h2>
+                <h3>R$7.000,00</h3>
+                <p>Variação: -5%</p>
+            </div>
+            <div class="card">
+                <h2>Comissão</h2>
+                <h3>R$2.500,00</h3>
+                <p>Variação: +3%</p>
+            </div>
+            <div class="card">
+                <h2>Lucro Bruto</h2>
+                <h3>R$18.000,00</h3>
+                <p>Variação: +15%</p>
+            </div>
+            <div class="card">
+                <h2>Lucro Líquido</h2>
+                <h3>R$10.000,00</h3>
+                <p>Variação: -7%</p>
+            </div>
+            <div class="card">
+                <h2>Ticket Médio</h2>
+                <h3>R$52,20</h3>
+                <p>Variação: -2%</p>
+            </div>
+        </div>
+
+        <!-- Tabela de Detalhes dos Pedidos -->
+        <div class="table-container">
+            <h2>Detalhes dos Pedidos</h2>
+            <div class="tabs">
+                <div class="tab active">A Receber</div>
+                <div class="tab">Pedidos Pagos</div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Pedido</th>
+                        <th>Status</th>
+                        <th>Subtotal</th>
+                        <th>Comissões iFood</th>
+                        <th>A Receber pelo Pedido</th>
+                        <th></th> <!-- Coluna para "Ver Detalhes" -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0001</td>
+                        <td>Aguardando Repasse</td>
+                        <td>R$89,45</td>
+                        <td>R$13,41</td>
+                        <td>R$76,03</td>
+                        <td><a href="#">Ver Detalhes</a></td>
+                    </tr>
+                    <!-- Outras linhas aqui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS e dependências -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

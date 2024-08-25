@@ -82,6 +82,13 @@ h5 {
 }
 
 /* Tornando o layout responsivo */
+@media (max-width: 1366px) {
+    .elemento{
+        width: 100%;
+        padding: 10px;
+    }
+}
+
 @media (max-width: 1200px) {
     .logo {
         margin-left: 100px; 
