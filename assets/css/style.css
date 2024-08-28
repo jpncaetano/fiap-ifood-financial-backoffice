@@ -23,13 +23,20 @@ h5 {
 
 /* Estilo do logo */
 .logo {
-    height: 40px;
-    margin: 10px;
-    margin-left: 200px;
+    max-height: 5vh; 
+    width: auto; /* Mantém a proporção da largura */
+    margin: 0 auto; 
+    display: block; 
     cursor: pointer;
     position: relative;
     z-index: 1000;
 }
+
+
+.img {
+    max-width: 100%;
+}
+
 
 /* Estilo dos Cards de Verificação */
 .card {
@@ -42,9 +49,8 @@ h5 {
     border-radius: 8px;
     padding: 30px 20px;
     width: 400px;
-    position: relative;
-    top: -200px;
-    left: -200px;
+    margin-right: auto;
+    margin-left: 20%;
 }
 
 /* Estilo das opções dentro dos Cards */
@@ -68,74 +74,65 @@ h5 {
 
 /* Estilo da estrutura principal */
 .container-fluid {
-    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding-left: 50px;
     padding-right: 50px;
-    margin-top: -50px;
+    flex-grow: 1;
+    flex-wrap: wrap; 
 }
 
 .intro-text {
     max-width: 50%;
     margin-right: 30px;
-    position: relative;
-    top: -200px;
 }
 
-/* Tornando o layout responsivo */
+/* Tornando o layout responsivo para telas até 1366px */
 @media (max-width: 1366px) {
-    .elemento{
-        width: 100%;
-        padding: 10px;
-    }
-}
-
-@media (max-width: 1200px) {
     .logo {
-        margin-left: 100px; 
+        margin-left: 8.33%; 
     }
 
     .intro-text {
         max-width: 60%;
-        top: -150px; 
+        text-align: center;
     }
 
     .verification-card {
-        top: -150px; 
+        width: 35.3%; 
+        margin-top: 20px;
+    }
+
+    .container-fluid {
+        flex-direction: column;
+        padding: 2.6%; 
+        margin-top: 0;
     }
 }
 
 @media (max-width: 992px) {
     .logo {
-        margin-left: 50px; 
-    }
-
-    .intro-text {
-        max-width: 100%;
-        top: -100px; 
-    }
-
-    .verification-card {
-        width: 350px;
-        top: -100px; 
-        left: 0; 
-    }
-}
-
-@media (max-width: 768px) {
-    .container-fluid {
-        flex-direction: column;
-        padding: 20px;
-        margin-top: 0;
+        margin-left: 5%; 
     }
 
     .intro-text, .verification-card {
-        top: 0;
         max-width: 100%;
         text-align: center;
     }
 
     .verification-card {
-        margin-top: 20px;
-        left: 0;
+        width: 90%; 
+    }
+}
+
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 20px;
+    }
+
+    .verification-card {
+        width: 100%;
+        text-align: center;
     }
 }
