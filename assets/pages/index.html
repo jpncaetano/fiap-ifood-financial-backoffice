@@ -18,6 +18,7 @@
 </head>
 <body>
     <div class="d-flex flex-column vh-100">
+
         <!-- Header superior vermelha -->
         <header style="background-color: #BF000E; height: 8%;">
             <div class="d-flex align-items-center h-100" style="padding-left: 10%;">
@@ -41,7 +42,7 @@
                             <p class="text-muted small">Você vai escanear o código QR com o app do iFood.</p>
                         </div>
                     </div>
-                    <div class="card-option d-flex align-items-center">
+                    <div class="card-option d-flex align-items-center" id="face-recognition-option">
                         <img src="/assets/images/Face ID.png" alt="Reconhecimento Facial" style="height: 40px;" class="mr-3">
                         <div>
                             <h5 class="mb-0">Reconhecimento Facial</h5>
@@ -49,11 +50,19 @@
                         </div>
                     </div>
                 </div>
+                <!-- Seção de simulação de reconhecimento facial -->
+                <div id="face-recognition-section" style="display: none; text-align: center;">
+                    <h5>Posicione seu rosto em frente à câmera</h5>
+                    <div id="face-recognition-animation" class="loading-animation"></div>
+                    <p class="text-muted small">Verificando...</p>
+                </div>
+                
                 <!-- Nova seção para exibição do código QR -->
                 <div id="qr-code-section" style="display: none; text-align: center;">
                     <h5>Escaneie este código QR para continuar:</h5>
                     <img src="/assets/images/QRCode_Fácil.png" alt="Código QR" style="max-width: 200px;">
-                    <button id="back-button" class="btn btn-secondary mt-3">Voltar</button>
+                    <div id="qr-code-animation" class="loading-animation mt-3"></div>
+                    <p class="text-muted mt-3">Lendo QR Code...</p>
                 </div>
             </section>
         </main>
