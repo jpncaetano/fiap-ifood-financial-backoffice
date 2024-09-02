@@ -2,7 +2,6 @@
 const qrOption = document.getElementById('qr-option');
 const qrCodeSection = document.getElementById('qr-code-section');
 const verificationOptions = document.getElementById('verification-options');
-const backButton = document.getElementById('back-button');
 const faceRecognitionOption = document.getElementById('face-recognition-option');
 const faceRecognitionSection = document.getElementById('face-recognition-section');
 
@@ -16,12 +15,6 @@ qrOption.addEventListener('click', function() {
         alert('Escaneamento concluído!');
         window.location.href = '/assets/pages/visaoGeral.html';  // Redireciona para a página Visão Geral
     }, 3000);  // Espera 3 segundos antes de redirecionar
-});
-
-// Adiciona um evento de clique para voltar para a tela anterior
-backButton.addEventListener('click', function() {
-    qrCodeSection.style.display = 'none';  // Esconde a seção do código QR
-    verificationOptions.style.display = 'block';  // Mostra as opções de verificação novamente
 });
 
 // Adiciona um evento de clique para simular o reconhecimento facial
