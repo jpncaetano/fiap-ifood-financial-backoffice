@@ -20,25 +20,53 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <img src="/assets/images/Logo.png" alt="iFood" class="logo">
-        <div class="menu">
-            <h3>Meu Restaurante</h3>
-            <div class="menu-item active">Financeiro</div>
-            <div class="submenu">
-                <div class="submenu-item">Visão Geral</div>
-                <div class="submenu-item">Análise de Desempenho</div>
-                <div class="submenu-item">Transações</div>
-                <div class="submenu-item">NF-e</div>
-            </div>
-        </div>
+        <a href="#">
+            <img src="/assets/images/logoVermelho.png" alt="iFood" class="logo">
+        </a>
+        <ul class="nav flex-column">
+            <!-- Menu Restaurante -->
+            <li class="nav-item">
+                <a class="nav-link" href="#">Meu Restaurante</a>
+            </li>
+
+            <!-- Status da Loja -->
+            <li class="nav-item">
+                <div class="status-box">
+                    <span class="status-circle"></span>
+                    <div class="status-text">
+                        <span class="status-label">Loja aberta</span>
+                        <span class="status-description">Dentro do horário programado</span>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Menu Financeiro -->
+            <li class="nav-item">
+                <span class="nav-link menu-pai">Financeiro</span>
+                <ul class="submenu">
+                    <li><a class="nav-link active" href="#">Visão Geral</a></li>
+                    <li><a class="nav-link" href="#">Análise de Desempenho</a></li>
+                    <li><a class="nav-link" href="#">Transações</a></li>
+                    <li><a class="nav-link" href="#">NF-e</a></li>
+                </ul>
+            </li>
+        </ul>
     </div>
 
     <!-- Conteúdo Principal -->
     <div class="main-content">
-        <h1>Financeiro</h1>
+        <div class="header-container">
+            <h1>Financeiro</h1>
+
+            <!-- Seletor de Período -->
+            <div class="period-container">
+                <label for="periodo">Período dos Dados:</label>
+                <input type="date" id="periodo" name="periodo" class="date-picker">
+            </div>
+        </div>
 
         <!-- Cards principais -->
-        <div class="card-container">
+        <div class="cards-box">
             <div class="card">
                 <h2>Valor a Receber</h2>
                 <p>Total</p>
@@ -54,16 +82,13 @@
                 <p>Total</p>
                 <h3>R$4.325,65</h3>
             </div>
-        </div>
-
-        <div class="card-container">
             <div class="card">
                 <h2>Receita Total</h2>
                 <h3>R$25.000,00</h3>
                 <p>Variação: +10%</p>
             </div>
             <div class="card">
-                <h2>Despesas Operacionais</h2>
+                <h2>Despesas Operacionais</h3>
                 <h3>R$7.000,00</h3>
                 <p>Variação: -5%</p>
             </div>
@@ -116,15 +141,71 @@
                         <td>R$76,03</td>
                         <td><a href="#">Ver Detalhes</a></td>
                     </tr>
-                    <!-- Outras linhas aqui -->
+                    <!-- Outras linhas de pedidos -->
+                    <tr>
+                        <td>0002</td>
+                        <td>Aguardando Repasse</td>
+                        <td>R$38,31</td>
+                        <td>R$5,74</td>
+                        <td>R$32,57</td>
+                        <td><a href="#">Ver Detalhes</a></td>
+                    </tr>
+                    <tr>
+                        <td>0003</td>
+                        <td>Aguardando Repasse</td>
+                        <td>R$50,75</td>
+                        <td>R$7,61</td>
+                        <td>R$43,14</td>
+                        <td><a href="#">Ver Detalhes</a></td>
+                    </tr>
+                    <tr>
+                        <td>0004</td>
+                        <td>Aguardando Repasse</td>
+                        <td>R$105,13</td>
+                        <td>R$15,76</td>
+                        <td>R$89,37</td>
+                        <td><a href="#">Ver Detalhes</a></td>
+                    </tr>
+                    <tr>
+                        <td>0005</td>
+                        <td>Aguardando Repasse</td>
+                        <td>R$29,45</td>
+                        <td>R$4,41</td>
+                        <td>R$25,04</td>
+                        <td><a href="#">Ver Detalhes</a></td>
+                    </tr>
+                    <tr>
+                        <td>0006</td>
+                        <td>Aguardando Repasse</td>
+                        <td>R$62,20</td>
+                        <td>R$9,33</td>
+                        <td>R$52,87</td>
+                        <td><a href="#">Ver Detalhes</a></td>
+                    </tr>
+                    <tr>
+                        <td>0007</td>
+                        <td>Aguardando Repasse</td>
+                        <td>R$100,50</td>
+                        <td>R$15,07</td>
+                        <td>R$85,43</td>
+                        <td><a href="#">Ver Detalhes</a></td>
+                    </tr>
+                    <tr>
+                        <td>0008</td>
+                        <td>Aguardando Repasse</td>
+                        <td>R$180,00</td>
+                        <td>R$27,00</td>
+                        <td>R$153,00</td>
+                        <td><a href="#">Ver Detalhes</a></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- Bootstrap JS e dependências -->
+    <!-- Bootstrap e JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-</html>
+</html> 
