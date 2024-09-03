@@ -282,3 +282,16 @@
     cursor: pointer;
 }
 
+.modal-header {
+    background-color: #BF000E;
+    color: #fff;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    background-color: #f9f9f9;
+}
+
