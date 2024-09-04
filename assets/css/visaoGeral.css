@@ -295,3 +295,6 @@
     background-color: #f9f9f9;
 }
 
+.card:hover {
+    transform: scale(1.05);
+}
