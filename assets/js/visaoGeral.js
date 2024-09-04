@@ -45,24 +45,31 @@ function searchTable() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("searchInput");
     filter = input.value.toUpperCase();
-    table = document.querySelector(".table");
-    tr = table.getElementsByTagName("tr");
 
-    // Loop sobre todas as linhas da tabela e oculta as que não correspondem à consulta de pesquisa
-    for (i = 1; i < tr.length; i++) {
-        tr[i].style.display = "none";
-        td = tr[i].getElementsByTagName("td");
-        for (var j = 0; j < td.length; j++) {
-            if (td[j]) {
-                txtValue = td[j].textContent || td[j].innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                    break;
+    // Verifica qual aba está ativa
+    var activeTab = document.querySelector('.pedidos-tab-content:not([style*="display: none"])');
+    
+    if (activeTab) {
+        table = activeTab.querySelector(".table");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop sobre todas as linhas da tabela e oculta as que não correspondem à consulta de pesquisa
+        for (i = 1; i < tr.length; i++) {
+            tr[i].style.display = "none";
+            td = tr[i].getElementsByTagName("td");
+            for (var j = 0; j < td.length; j++) {
+                if (td[j]) {
+                    txtValue = td[j].textContent || td[j].innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        break;
+                    }
                 }
             }
         }
     }
 }
+
 
 // Exibe a aba "A Receber" por padrão ao carregar a página
 window.onload = function() {
