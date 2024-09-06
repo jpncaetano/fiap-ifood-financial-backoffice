@@ -1,10 +1,3 @@
-// Reutilizando a estrutura básica de navegação das abas da Visão Geral
-
-window.onload = function() {
-    // Certifica-se de exibir o conteúdo da aba "Análise de Desempenho" no carregamento da página
-    document.getElementById('analiseDesempenho').style.display = 'block';
-};
-
 function showMainTab(tabId) {
     // Esconde todas as abas principais
     document.querySelectorAll('.tab-content').forEach(function(content) {
@@ -22,26 +15,71 @@ function showMainTab(tabId) {
     // Adiciona a classe 'active' à aba principal selecionada
     event.target.classList.add('active');
 
-    // Adiciona aqui a verificação da aba de Análise de Desempenho
-    if (tabId === 'analiseDesempenho') {
-        showDesempenhoTab('metricasSelecionadas'); // Pode ser que você tenha uma aba dentro da análise
+    // Garante que a aba "A Receber" esteja ativa ao selecionar "Visão Geral"
+    if (tabId === 'visaoGeral') {
+        showPedidosTab('aReceber');
     }
 }
 
-function showDesempenhoTab(tabId) {
-    // Esconde todas as abas de desempenho
-    document.querySelectorAll('.chart-placeholder').forEach(function(content) {
+function showPedidosTab(tabId) {
+    // Esconde todas as abas de pedidos
+    document.querySelectorAll('.pedidos-tab-content').forEach(function(content) {
         content.style.display = 'none';
     });
 
-    // Mostra a aba de desempenho selecionada
+    // Mostra a aba de pedidos selecionada
     document.getElementById(tabId).style.display = 'block';
 
-    // Remove a classe 'active' de todas as abas de desempenho
+    // Remove a classe 'active' de todas as abas de pedidos
     document.querySelectorAll('.tab').forEach(function(tab) {
         tab.classList.remove('active');
     });
 
-    // Adiciona a classe 'active' à aba de desempenho selecionada
-    event.target.classList.add('active');
+    // Adiciona a classe 'active' à aba de pedidos selecionada
+    const tabElement = document.querySelector('.tab[onclick="showPedidosTab(\'' + tabId + '\')"]');
+    tabElement.classList.add('active');
+}
+
+function searchTable() {
+    // Declaração de variáveis
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.querySelector(".table");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop sobre todas as linhas da tabela e oculta as que não correspondem à consulta de pesquisa
+    for (i = 1; i < tr.length; i++) {
+        tr[i].style.display = "none";
+        td = tr[i].getElementsByTagName("td");
+        for (var j = 0; j < td.length; j++) {
+            if (td[j]) {
+                txtValue = td[j].textContent || td[j].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                    break;
+                }
+            }
+        }
+    }
+}
+
+// Exibe a aba "A Receber" por padrão ao carregar a página
+window.onload = function() {
+    showPedidosTab('aReceber');
+}
+
+// Função para abrir a modal e preencher com os detalhes do pedido
+function abrirModalDetalhes(pedidoId, produto, quantidade, subtotal, comissao, cupons, repasse, liquido, metodoPagamento) {
+    document.getElementById('modalPedidoId').textContent = pedidoId;
+    document.getElementById('modalProduto').textContent = produto;
+    document.getElementById('modalQuantidade').textContent = quantidade;
+    document.getElementById('modalSubtotal').textContent = subtotal;
+    document.getElementById('modalComissao').textContent = comissao;
+    document.getElementById('modalCupons').textContent = cupons;
+    document.getElementById('modalRepasse').textContent = repasse;
+    document.getElementById('modalLiquido').textContent = liquido;
+    document.getElementById('modalMetodoPagamento').textContent = metodoPagamento;
+
+    $('#pedidoModal').modal('show');
 }

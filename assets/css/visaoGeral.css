@@ -1,4 +1,11 @@
-/* menu.css */
+/* Logo Ifood */
+.logo {
+    width: 150px;
+    display: block;
+    margin: 0 auto 30px;
+}
+
+/* Barra Lateral */
 .sidebar {
     width: 250px;
     background-color: #f8f9fa;
@@ -7,12 +14,40 @@
     position: fixed;
 }
 
-.logo {
-    width: 150px;
-    display: block;
-    margin: 0 auto 30px;
+/* Status da Loja */
+.status-box {
+    display: flex;
+    align-items: center;
+    background-color: #e8f5e9;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
+.status-circle {
+    width: 12px;
+    height: 12px;
+    background-color: #4caf50;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.status-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.status-label {
+    font-weight: bold;
+    color: #4caf50;
+}
+
+.status-description {
+    color: #777;
+    font-size: 12px;
+}
+
+/* Menu */
 .nav-link {
     color: #333;
     font-weight: bold;
@@ -59,36 +94,13 @@
     padding-left: 10px;
 }
 
-.status-box {
-    display: flex;
-    align-items: center;
-    background-color: #e8f5e9;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.status-circle {
-    width: 12px;
-    height: 12px;
-    background-color: #4caf50;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.status-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.status-label {
+/* Estilo para o item ativo do menu */
+.nav-item .dropdown-item.active, 
+.nav-item .nav-link.active {
+    background-color: #f5f5f5;
+    color: #BF000E;
     font-weight: bold;
-    color: #4caf50;
-}
-
-.status-description {
-    color: #777;
-    font-size: 12px;
+    border-left: 4px solid #BF000E;
 }
 
 /* Conteúdo principal */
@@ -97,6 +109,7 @@
     padding: 20px;
 }
 
+/* Cards Visão Geral*/
 .cards-box {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -107,20 +120,20 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.positive {
-    color: green;
-}
-
-.negative {
-    color: red;
-}
-
 .card {
     background-color: #fff;
     border-radius: 8px;
     padding: 20px;
     text-align: center;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.positive {
+    color: green;
+}
+
+.negative {
+    color: red;
 }
 
 .card:hover {
@@ -139,6 +152,7 @@
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+/* Tabelas */
 .table-container {
     background-color: #fff;
     padding: 20px;
@@ -178,6 +192,7 @@
 .table th {
     background-color: #f5f5f5;
     font-weight: bold;
+    text-align: left;
 }
 
 .table tbody tr:nth-child(even) {
@@ -197,62 +212,20 @@
     text-decoration: underline;
 }
 
-/* Estilo para o item ativo do menu */
-.nav-item .dropdown-item.active, 
-.nav-item .nav-link.active {
+/* Estilo para o botão (abas "A receber/Pagos") selecionado*/
+.tab.active {
+    background-color: #BF000E;
+    color: #fff;
+}
+
+/* Estilo para os botões (abas "A receber/Pagos") que não estão selecionados */
+.tab:not(.active):hover {
     background-color: #f5f5f5;
     color: #BF000E;
-    font-weight: bold;
-    border-left: 4px solid #BF000E; /* Essa linha cria a barra vermelha */
+    cursor: pointer;
 }
 
-/* Estilo para o hover que remove a barra vermelha */
-.nav-item .dropdown-item:hover:not(.active),
-.nav-item .nav-link:hover:not(.active) {
-    border-left: none; /* Isso remove a barra vermelha ao passar o mouse */
-    background-color: #f5f5f5;
-}
-
-/* Responsividade */
-@media (max-width: 992px) {
-    .card-container {
-        flex-direction: column;
-    }
-
-    .card {
-        flex: 1 1 100%;
-        margin-bottom: 20px;
-    }
-
-    .main-content {
-        margin-left: 0;
-    }
-
-    .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
-}
-.period-container {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.period-container label {
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.date-picker {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
+/* Header & Seletor de períodos */
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -264,9 +237,16 @@
     margin: 0;
 }
 
+.description h3 {
+    color: #333;
+    margin: 0;
+}
+
 .period-container {
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .period-container label {
@@ -281,19 +261,7 @@
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo para o botão selecionado */
-.tab.active {
-    background-color: #BF000E;
-    color: #fff;
-}
-
-/* Estilo para os botões que não estão selecionados */
-.tab:not(.active):hover {
-    background-color: #f5f5f5;
-    color: #BF000E;
-    cursor: pointer;
-}
-
+/* Janela Modal (Ver Detalhes) */
 .modal-header {
     background-color: #BF000E;
     color: #fff;
@@ -307,3 +275,24 @@
     background-color: #f9f9f9;
 }
 
+/* Responsividade */
+@media (max-width: 992px) {
+    .main-content {
+        margin-left: 0;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .card-container {
+        flex-direction: column;
+    }
+
+    .card {
+        flex: 1 1 100%;
+        margin-bottom: 20px;
+    }
+}

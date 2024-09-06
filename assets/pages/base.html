@@ -18,6 +18,7 @@
     <!-- CSS Personalizado -->
     <link rel="stylesheet" href="/assets/css/analiseDesempenho.css">
 </head>
+
 <body>
 
     <!-- Sidebar -->
@@ -26,7 +27,6 @@
             <img src="/assets/images/logoVermelho.png" alt="iFood" class="logo">
         </a>
         <ul class="nav flex-column">
-
             <!-- Nome do Restaurante -->
             <li class="nav-item">
                 <a class="nav-link" href="#">Restaurante do João</a>
@@ -47,9 +47,8 @@
             <li class="nav-item">
                 <span class="nav-link menu-pai">Financeiro</span>
                 <ul class="submenu">
-                    <li><a class="nav-link active" href="/assets/pages/visaoGeral.html" onclick="showMainTab('visaoGeral')">Visão Geral</a></li>
-                    <li><a class="nav-link" href="/assets/pages/analiseDesempenho.html" onclick="showMainTab('analiseDesempenho')">Análise de
-                            Desempenho</a></li>
+                    <li><a class="nav-link" href="/assets/pages/visaoGeral.html" onclick="showMainTab('visaoGeral')">Visão Geral</a></li>
+                    <li><a class="nav-link active" href="/assets/pages/analiseDesempenho.html" onclick="showMainTab('analiseDesempenho')">Análise de Desempenho</a></li>
                     <li><a class="nav-link" href="#" onclick="showMainTab('transacoes')">Transações</a></li>
                     <li><a class="nav-link" href="#" onclick="showMainTab('nfe')">NF-e</a></li>
                 </ul>
@@ -61,14 +60,9 @@
 <div class="main-content">
     <div class="header-container">
         <h1>Financeiro</h1>
-
-        <!-- Seletor de Período -->
-        <div class="period-container">
-            <label for="periodo">Período dos Dados:</label>
-            <input type="date" id="periodo" name="periodo" class="date-picker">
-        </div>
-    </div>
-    <div class="description">
-        <h3>Análise de Desempenho</h3>
-    </div>
+<!-- Seletor de Período -->
+<div class="period-container">
+    <label for="periodo">Período dos Dados:</label>
+    <input type="date" id="periodo" name="periodo" class="date-picker">
+</div>
 </div>        

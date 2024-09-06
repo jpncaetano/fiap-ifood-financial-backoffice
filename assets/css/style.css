@@ -24,7 +24,7 @@ h5 {
 /* Estilo do logo */
 .logo {
     max-height: 5vh; 
-    width: auto; /* Mantém a proporção da largura */
+    width: auto; 
     margin: 0 auto; 
     display: block; 
     cursor: pointer;
