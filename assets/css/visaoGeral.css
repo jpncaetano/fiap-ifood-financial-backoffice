@@ -107,12 +107,24 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.positive {
+    color: green;
+}
+
+.negative {
+    color: red;
+}
+
 .card {
     background-color: #fff;
     border-radius: 8px;
     padding: 20px;
     text-align: center;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: scale(1.05);
 }
 
 .search-container {

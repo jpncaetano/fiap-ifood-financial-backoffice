@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,17 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
 
     <!-- CSS Personalizado -->
     <link rel="stylesheet" href="/assets/css/visaoGeral.css">
 </head>
+
 <body>
 
     <!-- Sidebar -->
@@ -45,7 +48,8 @@
                 <span class="nav-link menu-pai">Financeiro</span>
                 <ul class="submenu">
                     <li><a class="nav-link active" href="#" onclick="showMainTab('visaoGeral')">Visão Geral</a></li>
-                    <li><a class="nav-link" href="#" onclick="showMainTab('analiseDesempenho')">Análise de Desempenho</a></li>
+                    <li><a class="nav-link" href="#" onclick="showMainTab('analiseDesempenho')">Análise de
+                            Desempenho</a></li>
                     <li><a class="nav-link" href="#" onclick="showMainTab('transacoes')">Transações</a></li>
                     <li><a class="nav-link" href="#" onclick="showMainTab('nfe')">NF-e</a></li>
                 </ul>
@@ -86,267 +90,302 @@
                 <div class="card">
                     <h2>Receita Total</h2>
                     <h3>R$25.000,00</h3>
-                    <p>Variação: +10%</p>
+                    <p>Variação: <span class="positive">+10%</span></p>
                 </div>
                 <div class="card">
                     <h2>Despesas Operacionais</h2>
                     <h3>R$7.000,00</h3>
-                    <p>Variação: -5%</p>
+                    <p>Variação: <span class="positive">-5%</span></p>
                 </div>
                 <div class="card">
                     <h2>Comissão</h2>
                     <h3>R$2.500,00</h3>
-                    <p>Variação: +3%</p>
+                    <p>Variação: <span class="negative">+3%</span></p>
                 </div>
                 <div class="card">
                     <h2>Lucro Bruto</h2>
                     <h3>R$18.000,00</h3>
-                    <p>Variação: +15%</p>
+                    <p>Variação: <span class="positive">+15%</span></p>
                 </div>
                 <div class="card">
                     <h2>Lucro Líquido</h2>
                     <h3>R$10.000,00</h3>
-                    <p>Variação: -7%</p>
+                    <p>Variação: <span class="negative">-7%</span></p>
                 </div>
                 <div class="card">
-                    <h2>Ticket Médio</h3>
+                    <h2>Ticket Médio</h2>
                     <h3>R$52,20</h3>
-                    <p>Variação: -2%</p>
-                </div>
-            </div>
-
-            <!-- Tabela de Detalhes dos Pedidos -->
-            <div class="table-container">
-                <h2>Detalhes dos Pedidos</h2>
-                <div class="tabs">
-                    <div class="tab active" onclick="showPedidosTab('aReceber')">A Receber</div>
-                    <div class="tab" onclick="showPedidosTab('pedidosPagos')">Pedidos Pagos</div>
-                </div>
-
-                <!-- Barra de Pesquisa -->
-                <div class="search-container">
-                    <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Buscar pedidos...">
-                </div>
-
-                <!-- Tabela A Receber -->
-                <div id="aReceber" class="tab-content pedidos-tab-content">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Pedido</th>
-                                <th>Status</th>
-                                <th>Subtotal</th>
-                                <th>Comissões iFood</th>
-                                <th>A Receber pelo Pedido</th>
-                                <th></th> <!-- Coluna para "Ver Detalhes" -->
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>0001</td>
-                                <td>Aguardando Repasse</td>
-                                <td>R$89,45</td>
-                                <td>R$13,41</td>
-                                <td>R$76,03</td>
-                                <td><a href="#" onclick="abrirModalDetalhes('0001', 'Cheese Burguer da Casa', 1, 'R$89,45', 'R$13,41', 'R$0,00', '12/03/2024', 'R$76,03', 'Cartão de Débito')">Ver Detalhes</a></td>
-                            </tr>
-                            <tr>
-                                <td>0002</td>
-                                <td>Aguardando Repasse</td>
-                                <td>R$38,31</td>
-                                <td>R$5,74</td>
-                                <td>R$32,57</td>
-                                <td><a href="#" onclick="abrirModalDetalhes('0002', 'Bauru', 2, 'R$38,31', 'R$5,74', 'R$0,00', '11/03/2024', 'R$32,57', 'Cartão de Crédito')">Ver Detalhes</a></td>
-                            </tr>
-                            <tr>
-                                <td>0003</td>
-                                <td>Aguardando Repasse</td>
-                                <td>R$50,75</td>
-                                <td>R$7,61</td>
-                                <td>R$43,14</td>
-                                <td><a href="#" onclick="abrirModalDetalhes('0003', 'Pizza Margherita', 1, 'R$50,75', 'R$7,61', 'R$0,00', '10/03/2024', 'R$43,14', 'Pix')">Ver Detalhes</a></td>
-                            </tr>
-                            <tr>
-                                <td>0004</td>
-                                <td>Aguardando Repasse</td>
-                                <td>R$105,13</td>
-                                <td>R$15,76</td>
-                                <td>R$89,37</td>
-                                <td><a href="#" onclick="abrirModalDetalhes('0004', 'Combo Sushi', 1, 'R$105,13', 'R$15,76', 'R$10,00', '09/03/2024', 'R$89,37', 'Boleto Bancário')">Ver Detalhes</a></td>
-                            </tr>
-                            <tr>
-                                <td>0005</td>
-                                <td>Aguardando Repasse</td>
-                                <td>R$29,45</td>
-                                <td>R$4,41</td>
-                                <td>R$25,04</td>
-                                <td><a href="#" onclick="abrirModalDetalhes('0005', 'Salada Caesar', 1, 'R$29,45', 'R$4,41', 'R$0,00', '08/03/2024', 'R$25,04', 'Cartão de Débito')">Ver Detalhes</a></td>
-                            </tr>
-                            <tr>
-                                <td>0006</td>
-                                <td>Aguardando Repasse</td>
-                                <td>R$62,20</td>
-                                <td>R$9,33</td>
-                                <td>R$52,87</td>
-                                <td><a href="#" onclick="abrirModalDetalhes('0006', 'Espaguete à Bolonhesa', 1, 'R$62,20', 'R$9,33', 'R$5,00', '07/03/2024', 'R$52,87', 'Cartão de Crédito')">Ver Detalhes</a></td>
-                            </tr>
-                            <tr>
-                                <td>0007</td>
-                                <td>Aguardando Repasse</td>
-                                <td>R$100,50</td>
-                                <td>R$15,07</td>
-                                <td>R$85,43</td>
-                                <td><a href="#" onclick="abrirModalDetalhes('0007', 'Bife à Parmegiana', 2, 'R$100,50', 'R$15,07', 'R$0,00', '06/03/2024', 'R$85,43', 'Cartão de Débito')">Ver Detalhes</a></td>
-                            </tr>
-                            <tr>
-                                <td>0008</td>
-                                <td>Aguardando Repasse</td>
-                                <td>R$180,00</td>
-                                <td>R$27,00</td>
-                                <td>R$153,00</td>
-                                <td><a href="#" onclick="abrirModalDetalhes('0008', 'Rodízio de Churrasco', 3, 'R$180,00', 'R$27,00', 'R$0,00', '05/03/2024', 'R$153,00', 'Dinheiro')">Ver Detalhes</a></td>
-                            </tr>                        
-                        </tbody>
-                        
-                    </table>
-                </div>
-
-                <!-- Tabela Pedidos Pagos -->
-                <div id="pedidosPagos" class="tab-content pedidos-tab-content" style="display: none;">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Pedido</th>
-                                <th>Status</th>
-                                <th>Subtotal</th>
-                                <th>Transferência em</th>
-                                <th>Valor Repassado</th>
-                                <th></th> <!-- Coluna para "Ver Detalhes" -->
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>0001</td>
-                                <td>Pago</td>
-                                <td>R$89,45</td>
-                                <td>12/03/2023</td>
-                                <td>R$76,03</td>
-                                <td><a href="#" onclick="abrirModalDetalhes('0001', 'Cheese Burguer da Casa', 1, 'R$89,45', 'R$13,41', 'R$0,00', '12/03/2023', 'R$76,03', 'Cartão de Débito')">Ver Detalhes</a></td>
-                            </tr>
-                            <tr>
-                                <td>0002</td>
-                                <td>Pago</td>
-                                <td>R$38,31</td>
-                                <td>11/03/2023</td>
-                                <td>R$32,57</td>
-                                <td><a href="#" onclick="abrirModalDetalhes('0002', 'Bauru', 2, 'R$38,31', 'R$5,74', 'R$0,00', '11/03/2023', 'R$32,57', 'Cartão de Crédito')">Ver Detalhes</a></td>
-                            </tr>
-                            <tr>
-                                <td>0003</td>
-                                <td>Pago</td>
-                                <td>R$50,75</td>
-                                <td>10/03/2023</td>
-                                <td>R$43,14</td>
-                                <td><a href="#" onclick="abrirModalDetalhes('0003', 'Pizza Margherita', 1, 'R$50,75', 'R$7,61', 'R$0,00', '10/03/2023', 'R$43,14', 'Pix')">Ver Detalhes</a></td>
-                            </tr>
-                            <tr>
-                                <td>0004</td>
-                                <td>Pago</td>
-                                <td>R$105,13</td>
-                                <td>09/03/2023</td>
-                                <td>R$89,37</td>
-                                <td><a href="#" onclick="abrirModalDetalhes('0004', 'Combo Sushi', 1, 'R$105,13', 'R$15,76', 'R$10,00', '09/03/2023', 'R$89,37', 'Boleto Bancário')">Ver Detalhes</a></td>
-                            </tr>
-                            <tr>
-                                <td>0005</td>
-                                <td>Pago</td>
-                                <td>R$29,45</td>
-                                <td>08/03/2023</td>
-                                <td>R$25,04</td>
-                                <td><a href="#" onclick="abrirModalDetalhes('0005', 'Salada Caesar', 1, 'R$29,45', 'R$4,41', 'R$0,00', '08/03/2023', 'R$25,04', 'Cartão de Débito')">Ver Detalhes</a></td>
-                            </tr>
-                            <tr>
-                                <td>0006</td>
-                                <td>Pago</td>
-                                <td>R$62,20</td>
-                                <td>07/03/2023</td>
-                                <td>R$52,87</td>
-                                <td><a href="#" onclick="abrirModalDetalhes('0006', 'Espaguete à Bolonhesa', 1, 'R$62,20', 'R$9,33', 'R$5,00', '07/03/2023', 'R$52,87', 'Cartão de Crédito')">Ver Detalhes</a></td>
-                            </tr>
-                            <tr>
-                                <td>0007</td>
-                                <td>Pago</td>
-                                <td>R$100,50</td>
-                                <td>06/03/2023</td>
-                                <td>R$85,43</td>
-                                <td><a href="#" onclick="abrirModalDetalhes('0007', 'Bife à Parmegiana', 2, 'R$100,50', 'R$15,07', 'R$0,00', '06/03/2023', 'R$85,43', 'Cartão de Débito')">Ver Detalhes</a></td>
-                            </tr>
-                            <tr>
-                                <td>0008</td>
-                                <td>Pago</td>
-                                <td>R$180,00</td>
-                                <td>05/03/2023</td>
-                                <td>R$153,00</td>
-                                <td><a href="#" onclick="abrirModalDetalhes('0008', 'Rodízio de Churrasco', 3, 'R$180,00', 'R$27,00', 'R$0,00', '05/03/2023', 'R$153,00', 'Dinheiro')">Ver Detalhes</a></td>
-                            </tr>                       
-                        </tbody>
-                        
-                    </table>
+                    <p>Variação: <span class="negative">-2%</span></p>
                 </div>
             </div>
         </div>
 
-        <!-- Modal -->
-<div class="modal fade" id="pedidoModal" tabindex="-1" role="dialog" aria-labelledby="pedidoModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="pedidoModalLabel">Detalhes do Pedido</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <!-- Tabela de Detalhes dos Pedidos -->
+        <div class="table-container">
+            <h2>Detalhes dos Pedidos</h2>
+            <div class="tabs">
+                <div class="tab active" onclick="showPedidosTab('aReceber')">A Receber</div>
+                <div class="tab" onclick="showPedidosTab('pedidosPagos')">Pedidos Pagos</div>
+            </div>
+
+            <!-- Barra de Pesquisa -->
+            <div class="search-container">
+                <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Buscar pedidos...">
+            </div>
+
+            <!-- Tabela A Receber -->
+            <div id="aReceber" class="tab-content pedidos-tab-content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Pedido</th>
+                            <th>Status</th>
+                            <th>Subtotal</th>
+                            <th>Comissões iFood</th>
+                            <th>A Receber pelo Pedido</th>
+                            <th></th> <!-- Coluna para "Ver Detalhes" -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0001</td>
+                            <td>Aguardando Repasse</td>
+                            <td>R$89,45</td>
+                            <td>R$13,41</td>
+                            <td>R$76,03</td>
+                            <td><a href="#"
+                                    onclick="abrirModalDetalhes('0001', 'Cheese Burguer da Casa', 1, 'R$89,45', 'R$13,41', 'R$0,00', '12/03/2024', 'R$76,03', 'Cartão de Débito')">Ver
+                                    Detalhes</a></td>
+                        </tr>
+                        <tr>
+                            <td>0002</td>
+                            <td>Aguardando Repasse</td>
+                            <td>R$38,31</td>
+                            <td>R$5,74</td>
+                            <td>R$32,57</td>
+                            <td><a href="#"
+                                    onclick="abrirModalDetalhes('0002', 'Bauru', 2, 'R$38,31', 'R$5,74', 'R$0,00', '11/03/2024', 'R$32,57', 'Cartão de Crédito')">Ver
+                                    Detalhes</a></td>
+                        </tr>
+                        <tr>
+                            <td>0003</td>
+                            <td>Aguardando Repasse</td>
+                            <td>R$50,75</td>
+                            <td>R$7,61</td>
+                            <td>R$43,14</td>
+                            <td><a href="#"
+                                    onclick="abrirModalDetalhes('0003', 'Pizza Margherita', 1, 'R$50,75', 'R$7,61', 'R$0,00', '10/03/2024', 'R$43,14', 'Pix')">Ver
+                                    Detalhes</a></td>
+                        </tr>
+                        <tr>
+                            <td>0004</td>
+                            <td>Aguardando Repasse</td>
+                            <td>R$105,13</td>
+                            <td>R$15,76</td>
+                            <td>R$89,37</td>
+                            <td><a href="#"
+                                    onclick="abrirModalDetalhes('0004', 'Combo Sushi', 1, 'R$105,13', 'R$15,76', 'R$10,00', '09/03/2024', 'R$89,37', 'Boleto Bancário')">Ver
+                                    Detalhes</a></td>
+                        </tr>
+                        <tr>
+                            <td>0005</td>
+                            <td>Aguardando Repasse</td>
+                            <td>R$29,45</td>
+                            <td>R$4,41</td>
+                            <td>R$25,04</td>
+                            <td><a href="#"
+                                    onclick="abrirModalDetalhes('0005', 'Salada Caesar', 1, 'R$29,45', 'R$4,41', 'R$0,00', '08/03/2024', 'R$25,04', 'Cartão de Débito')">Ver
+                                    Detalhes</a></td>
+                        </tr>
+                        <tr>
+                            <td>0006</td>
+                            <td>Aguardando Repasse</td>
+                            <td>R$62,20</td>
+                            <td>R$9,33</td>
+                            <td>R$52,87</td>
+                            <td><a href="#"
+                                    onclick="abrirModalDetalhes('0006', 'Espaguete à Bolonhesa', 1, 'R$62,20', 'R$9,33', 'R$5,00', '07/03/2024', 'R$52,87', 'Cartão de Crédito')">Ver
+                                    Detalhes</a></td>
+                        </tr>
+                        <tr>
+                            <td>0007</td>
+                            <td>Aguardando Repasse</td>
+                            <td>R$100,50</td>
+                            <td>R$15,07</td>
+                            <td>R$85,43</td>
+                            <td><a href="#"
+                                    onclick="abrirModalDetalhes('0007', 'Bife à Parmegiana', 2, 'R$100,50', 'R$15,07', 'R$0,00', '06/03/2024', 'R$85,43', 'Cartão de Débito')">Ver
+                                    Detalhes</a></td>
+                        </tr>
+                        <tr>
+                            <td>0008</td>
+                            <td>Aguardando Repasse</td>
+                            <td>R$180,00</td>
+                            <td>R$27,00</td>
+                            <td>R$153,00</td>
+                            <td><a href="#"
+                                    onclick="abrirModalDetalhes('0008', 'Rodízio de Churrasco', 3, 'R$180,00', 'R$27,00', 'R$0,00', '05/03/2024', 'R$153,00', 'Dinheiro')">Ver
+                                    Detalhes</a></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+            <!-- Tabela Pedidos Pagos -->
+            <div id="pedidosPagos" class="tab-content pedidos-tab-content" style="display: none;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Pedido</th>
+                            <th>Status</th>
+                            <th>Subtotal</th>
+                            <th>Transferência em</th>
+                            <th>Valor Repassado</th>
+                            <th></th> <!-- Coluna para "Ver Detalhes" -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0001</td>
+                            <td>Pago</td>
+                            <td>R$89,45</td>
+                            <td>12/03/2023</td>
+                            <td>R$76,03</td>
+                            <td><a href="#"
+                                    onclick="abrirModalDetalhes('0001', 'Cheese Burguer da Casa', 1, 'R$89,45', 'R$13,41', 'R$0,00', '12/03/2023', 'R$76,03', 'Cartão de Débito')">Ver
+                                    Detalhes</a></td>
+                        </tr>
+                        <tr>
+                            <td>0002</td>
+                            <td>Pago</td>
+                            <td>R$38,31</td>
+                            <td>11/03/2023</td>
+                            <td>R$32,57</td>
+                            <td><a href="#"
+                                    onclick="abrirModalDetalhes('0002', 'Bauru', 2, 'R$38,31', 'R$5,74', 'R$0,00', '11/03/2023', 'R$32,57', 'Cartão de Crédito')">Ver
+                                    Detalhes</a></td>
+                        </tr>
+                        <tr>
+                            <td>0003</td>
+                            <td>Pago</td>
+                            <td>R$50,75</td>
+                            <td>10/03/2023</td>
+                            <td>R$43,14</td>
+                            <td><a href="#"
+                                    onclick="abrirModalDetalhes('0003', 'Pizza Margherita', 1, 'R$50,75', 'R$7,61', 'R$0,00', '10/03/2023', 'R$43,14', 'Pix')">Ver
+                                    Detalhes</a></td>
+                        </tr>
+                        <tr>
+                            <td>0004</td>
+                            <td>Pago</td>
+                            <td>R$105,13</td>
+                            <td>09/03/2023</td>
+                            <td>R$89,37</td>
+                            <td><a href="#"
+                                    onclick="abrirModalDetalhes('0004', 'Combo Sushi', 1, 'R$105,13', 'R$15,76', 'R$10,00', '09/03/2023', 'R$89,37', 'Boleto Bancário')">Ver
+                                    Detalhes</a></td>
+                        </tr>
+                        <tr>
+                            <td>0005</td>
+                            <td>Pago</td>
+                            <td>R$29,45</td>
+                            <td>08/03/2023</td>
+                            <td>R$25,04</td>
+                            <td><a href="#"
+                                    onclick="abrirModalDetalhes('0005', 'Salada Caesar', 1, 'R$29,45', 'R$4,41', 'R$0,00', '08/03/2023', 'R$25,04', 'Cartão de Débito')">Ver
+                                    Detalhes</a></td>
+                        </tr>
+                        <tr>
+                            <td>0006</td>
+                            <td>Pago</td>
+                            <td>R$62,20</td>
+                            <td>07/03/2023</td>
+                            <td>R$52,87</td>
+                            <td><a href="#"
+                                    onclick="abrirModalDetalhes('0006', 'Espaguete à Bolonhesa', 1, 'R$62,20', 'R$9,33', 'R$5,00', '07/03/2023', 'R$52,87', 'Cartão de Crédito')">Ver
+                                    Detalhes</a></td>
+                        </tr>
+                        <tr>
+                            <td>0007</td>
+                            <td>Pago</td>
+                            <td>R$100,50</td>
+                            <td>06/03/2023</td>
+                            <td>R$85,43</td>
+                            <td><a href="#"
+                                    onclick="abrirModalDetalhes('0007', 'Bife à Parmegiana', 2, 'R$100,50', 'R$15,07', 'R$0,00', '06/03/2023', 'R$85,43', 'Cartão de Débito')">Ver
+                                    Detalhes</a></td>
+                        </tr>
+                        <tr>
+                            <td>0008</td>
+                            <td>Pago</td>
+                            <td>R$180,00</td>
+                            <td>05/03/2023</td>
+                            <td>R$153,00</td>
+                            <td><a href="#"
+                                    onclick="abrirModalDetalhes('0008', 'Rodízio de Churrasco', 3, 'R$180,00', 'R$27,00', 'R$0,00', '05/03/2023', 'R$153,00', 'Dinheiro')">Ver
+                                    Detalhes</a></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
         </div>
-        <div class="modal-body">
-          <p><strong>Pedido:</strong> <span id="modalPedidoId"></span></p>
-          <p><strong>Produto:</strong> <span id="modalProduto"></span></p>
-          <p><strong>Quantidade:</strong> <span id="modalQuantidade"></span></p>
-          <p><strong>Subtotal:</strong> <span id="modalSubtotal"></span></p>
-          <p><strong>Comissão:</strong> <span id="modalComissao"></span></p>
-          <p><strong>Cupons:</strong> <span id="modalCupons"></span></p>
-          <p><strong>Repasse em:</strong> <span id="modalRepasse"></span></p>
-          <p><strong>Líquido a Receber:</strong> <span id="modalLiquido"></span></p>
-          <p><strong>Método de Pagamento:</strong> <span id="modalMetodoPagamento"></span></p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        </div>
-      </div>
     </div>
-  </div>
-  
-        <!-- Outros Menus Principais -->
-        <div id="analiseDesempenho" class="tab-content" style="display: none;">
-            <h2>Análise de Desempenho</h2>
-            <!-- Conteúdo relacionado à Análise de Desempenho -->
-        </div>
 
-        <div id="transacoes" class="tab-content" style="display: none;">
-            <h2>Transações</h2>
-            <!-- Conteúdo relacionado a Transações -->
-        </div>
-
-        <div id="nfe" class="tab-content" style="display: none;">
-            <h2>NF-e</h2>
-            <!-- Conteúdo relacionado a NF-e -->
+    <!-- Modal -->
+    <div class="modal fade" id="pedidoModal" tabindex="-1" role="dialog" aria-labelledby="pedidoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pedidoModalLabel">Detalhes do Pedido</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Pedido:</strong> <span id="modalPedidoId"></span></p>
+                    <p><strong>Produto:</strong> <span id="modalProduto"></span></p>
+                    <p><strong>Quantidade:</strong> <span id="modalQuantidade"></span></p>
+                    <p><strong>Subtotal:</strong> <span id="modalSubtotal"></span></p>
+                    <p><strong>Comissão:</strong> <span id="modalComissao"></span></p>
+                    <p><strong>Cupons:</strong> <span id="modalCupons"></span></p>
+                    <p><strong>Repasse em:</strong> <span id="modalRepasse"></span></p>
+                    <p><strong>Líquido a Receber:</strong> <span id="modalLiquido"></span></p>
+                    <p><strong>Método de Pagamento:</strong> <span id="modalMetodoPagamento"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
         </div>
     </div>
 
-  <!-- Bootstrap -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Outros Menus Principais -->
+    <div id="analiseDesempenho" class="tab-content" style="display: none;">
+        <h2>Análise de Desempenho</h2>
+        <!-- Conteúdo relacionado à Análise de Desempenho -->
+    </div>
 
-  <!-- JavaScript -->
+    <div id="transacoes" class="tab-content" style="display: none;">
+        <h2>Transações</h2>
+        <!-- Conteúdo relacionado a Transações -->
+    </div>
+
+    <div id="nfe" class="tab-content" style="display: none;">
+        <h2>NF-e</h2>
+        <!-- Conteúdo relacionado a NF-e -->
+    </div>
+    </div>
+
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript -->
     <script src="/assets/js/visaoGeral.js"></script>
-    </body>
+</body>
+
 </html>

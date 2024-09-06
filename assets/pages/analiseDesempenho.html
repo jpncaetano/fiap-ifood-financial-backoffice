@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financeiro - Análise de Desempenho</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="/assets/css/analiseDesempenho.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#">
+            <img src="/assets/images/logoVermelho.png" alt="iFood" class="logo">
+        </a>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Meu Restaurante</a>
+            </li>
+            <li class="nav-item">
+                <div class="status-box">
+                    <span class="status-circle"></span>
+                    <div class="status-text">
+                        <span class="status-label">Loja aberta</span>
+                        <span class="status-description">Dentro do horário programado</span>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link menu-pai">Financeiro</span>
+                <ul class="submenu">
+                    <li><a class="nav-link" href="/assets/pages/visaoGeral.html">Visão Geral</a></li>
+                    <li><a class="nav-link active" href="#">Análise de Desempenho</a></li>
+                    <li><a class="nav-link" href="#">Transações</a></li>
+                    <li><a class="nav-link" href="#">NF-e</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <div class="main-content">
+        <div class="header-container">
+            <h1>Financeiro</h1>
+            <div class="period-container">
+                <label for="periodo">Período dos Dados:</label>
+                <input type="date" id="periodo" name="periodo" class="date-picker">
+            </div>
+        </div>
+
+        <!-- Conteúdo da Análise de Desempenho -->
+        <div id="analiseDesempenho" class="tab-content">
+            <h2>Análise de Desempenho</h2>
+            <div class="cards-box">
+                <!-- Cards das métricas -->
+                <div class="card">
+                    <h2>Vendas</h2>
+                    <p>R$1.234,56</p>
+                    <p>Variação: +25%</p>
+                </div>
+                <div class="card">
+                    <h2>Pedidos</h2>
+                    <p>33</p>
+                    <p>Variação: +35%</p>
+                </div>
+                <div class="card">
+                    <h2>Vendas por Pedido</h2>
+                    <p>R$37,41</p>
+                    <p>Variação: +21%</p>
+                </div>
+                <div class="card">
+                    <h2>Repasse</h2>
+                    <p>R$901,23</p>
+                </div>
+                <div class="card">
+                    <h2>Repasse Agendado</h2>
+                    <p>R$4.567,89</p>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <div class="tab active" onclick="showDesempenhoTab('metricasSelecionadas')">Total de vendas</div>
+                <div class="tab" onclick="showDesempenhoTab('despesasOperacionais')">Despesas operacionais</div>
+            </div>
+
+            <!-- Placeholder para o gráfico de desempenho -->
+            <div class="chart-placeholder">
+                Gráfico de tendência das métricas selecionadas
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="/assets/js/analiseDesempenho.js"></script>
+</body>
+</html>
