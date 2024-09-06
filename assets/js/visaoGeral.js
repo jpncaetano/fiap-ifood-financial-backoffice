@@ -70,6 +70,7 @@ function searchTable() {
     }
 }
 
+
 // Exibe a aba "A Receber" por padrão ao carregar a página
 window.onload = function() {
     showPedidosTab('aReceber');

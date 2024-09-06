@@ -275,24 +275,3 @@
     background-color: #f9f9f9;
 }
 
-/* Responsividade */
-@media (max-width: 992px) {
-    .main-content {
-        margin-left: 0;
-    }
-
-    .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
-
-    .card-container {
-        flex-direction: column;
-    }
-
-    .card {
-        flex: 1 1 100%;
-        margin-bottom: 20px;
-    }
-}
