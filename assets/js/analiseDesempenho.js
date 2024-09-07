@@ -53,7 +53,6 @@ window.onload = function() {
                 legend: {
                     position: 'bottom',
                     onClick: null,
-                    display: false
                 }
             }
         }
