@@ -18,6 +18,7 @@
     <!-- CSS Personalizado -->
     <link rel="stylesheet" href="/assets/css/analiseDesempenho.css">
 </head>
+
 <body>
 
     <!-- Sidebar -->
@@ -48,74 +49,90 @@
                 <span class="nav-link menu-pai">Financeiro</span>
                 <ul class="submenu">
                     <li><a class="nav-link" href="/assets/pages/visaoGeral.html">Visão Geral</a></li>
-                    <li><a class="nav-link active" href="/assets/pages/analiseDesempenho.html">Análise de Desempenho</a></li>
+                    <li><a class="nav-link active" href="/assets/pages/analiseDesempenho.html">Análise de Desempenho</a>
+                    </li>
                     <li><a class="nav-link" href="/assets/pages/transacoes.html">Transações</a></li>
                     <li><a class="nav-link" href="/assets/pages/nfe.html">NF-e</a></li>
                 </ul>
             </li>
         </ul>
     </div>
-    
-<!-- Conteúdo Principal -->
-<div class="main-content">
-    <div class="header-container">
-        <h1>Financeiro</h1>
 
-        <!-- Seletor de Período -->
-        <div class="period-container">
-            <label for="periodo">Período dos Dados:</label>
-            <input type="date" id="periodo" name="periodo" class="date-picker">
-        </div>
-    </div>
-    <div class="description">
-        <h3>Análise de Desempenho</h3>
-    </div>
+    <!-- Conteúdo Principal -->
+    <div class="main-content">
+        <div class="header-container">
+            <h1>Financeiro</h1>
 
-    <!-- Cards Principais -->
-    <div class="cards-container">
-        <div class="card">
-            <h4>Vendas</h4>
-            <p>R$1.234,56</p>
-            <small class="positive">+25%</small>
+            <!-- Seletor de Período -->
+            <div class="period-container">
+                <label for="periodo">Período dos Dados:</label>
+                <input type="date" id="periodo" name="periodo" class="date-picker">
+            </div>
         </div>
-        <div class="card">
-            <h4>Pedidos</h4>
-            <p>33</p>
-            <small class="positive">+35%</small>
+        <div class="description">
+            <h3>Análise de Desempenho</h3>
         </div>
-        <div class="card">
-            <h4>Vendas por Pedido</h4>
-            <p>R$37,41</p>
-            <small class="positive">+21%</small>
-        </div>
-        <div class="card">
-            <h4>Repasses</h4>
-            <p>R$901,23</p>
-            <small class="neutral">Em tempo real</small>
-        </div>
-        <div class="card">
-            <h4>Repasses Agendados</h4>
-            <p>R$4.567,89</p>
-            <small class="neutral">Previsto para 01/10</small>
-        </div>
-    </div>
 
-    <!-- Seletor de Métricas e Gráfico -->
-    <div class="performance-metrics">
-        <h4>Desempenho</h4>
+        <!-- Cards Principais -->
+        <div class="cards-container">
+            <div class="card">
+                <h4>Vendas</h4>
+                <p>R$1.234,56</p>
+                <small class="positive">+25%</small>
+            </div>
+            <div class="card">
+                <h4>Pedidos</h4>
+                <p>33</p>
+                <small class="positive">+35%</small>
+            </div>
+            <div class="card">
+                <h4>Vendas por Pedido</h4>
+                <p>R$37,41</p>
+                <small class="positive">+21%</small>
+            </div>
+            <div class="card">
+                <h4>Repasses</h4>
+                <p>R$901,23</p>
+                <small class="neutral">Em tempo real</small>
+            </div>
+            <div class="card">
+                <h4>Repasses Agendados</h4>
+                <p>R$4.567,89</p>
+                <small class="neutral">Previsto para 01/10</small>
+            </div>
+        </div>
+        <!-- Adicionando o novo cabeçalho "Desempenho" -->
+        <div class="performance-header">
+            <h2>Desempenho</h2>
+        </div>
+        <!-- Adicionando o subtítulo "Selecione as Métricas" -->
+        <div class="metric-selector-header">
+            <h6>Selecione as métricas:</h6>
+        </div>
+        <!-- Seletor de Métricas e Gráfico -->
+        <!-- Seletor de Métricas e Gráfico -->
         <div class="metric-selector">
-            <label><input type="checkbox" checked> Total de Vendas</label>
-            <label><input type="checkbox" checked> Total de Pedidos</label>
-            <label><input type="checkbox"> Despesas Operacionais</label>
-            <label><input type="checkbox"> Lucro Bruto</label>
-            <label><input type="checkbox"> Cancelamentos</label>
+            <label><input type="checkbox" id="total-vendas" class="metric-checkbox" checked> Total de Vendas</label>
+            <label><input type="checkbox" id="total-pedidos" class="metric-checkbox"> Total de Pedidos</label>
+            <label><input type="checkbox" id="despesas-operacionais" class="metric-checkbox"> Despesas
+                Operacionais</label>
+            <label><input type="checkbox" id="lucro-bruto" class="metric-checkbox"> Lucro Bruto</label>
+            <label><input type="checkbox" id="cancelamentos" class="metric-checkbox"> Cancelamentos</label>
+            <label><input type="checkbox" id="receita-por-pedidos" class="metric-checkbox"> Receita por Pedidos</label>
+            <label><input type="checkbox" id="lucro-liquido" class="metric-checkbox"> Lucro Líquido</label>
+            <label><input type="checkbox" id="pagamentos-recebidos" class="metric-checkbox"> Pagamentos
+                Recebidos</label>
+            <label><input type="checkbox" id="pagamentos-pendentes" class="metric-checkbox"> Pagamentos
+                Pendentes</label>
+            <label><input type="checkbox" id="crescimento-vendas" class="metric-checkbox"> Crescimento de Vendas</label>
+            <label><input type="checkbox" id="ticket-medio" class="metric-checkbox"> Ticket Médio</label>
+            <label><input type="checkbox" id="reembolsos" class="metric-checkbox"> Reembolsos</label>
         </div>
         <!-- Gráfico de Desempenho (placeholder) -->
         <canvas id="performanceChart"></canvas>
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/assets/js/analiseDesempenho.js"></script> 
-    
 
-</div>        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="/assets/js/analiseDesempenho.js"></script>
+
+
+    </div>
