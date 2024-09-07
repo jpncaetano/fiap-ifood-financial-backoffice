@@ -47,11 +47,10 @@
             <li class="nav-item">
                 <span class="nav-link menu-pai">Financeiro</span>
                 <ul class="submenu">
-                    <li><a class="nav-link active" href="/assets/pages/visaoGeral.html" onclick="showMainTab('visaoGeral')">Visão Geral</a></li>
-                    <li><a class="nav-link" href="/assets/pages/analiseDesempenho.html" onclick="showMainTab('analiseDesempenho')">Análise de
-                            Desempenho</a></li>
-                    <li><a class="nav-link" href="#" onclick="showMainTab('transacoes')">Transações</a></li>
-                    <li><a class="nav-link" href="#" onclick="showMainTab('nfe')">NF-e</a></li>
+                    <li><a class="nav-link" href="/assets/pages/visaoGeral.html">Visão Geral</a></li>
+                    <li><a class="nav-link active" href="/assets/pages/analiseDesempenho.html">Análise de Desempenho</a></li>
+                    <li><a class="nav-link" href="/assets/pages/transacoes.html">Transações</a></li>
+                    <li><a class="nav-link" href="/assets/pages/nfe.html">NF-e</a></li>
                 </ul>
             </li>
         </ul>
@@ -71,4 +70,52 @@
     <div class="description">
         <h3>Análise de Desempenho</h3>
     </div>
+
+    <!-- Cards Principais -->
+    <div class="cards-container">
+        <div class="card">
+            <h4>Vendas</h4>
+            <p>R$1.234,56</p>
+            <small class="positive">+25%</small>
+        </div>
+        <div class="card">
+            <h4>Pedidos</h4>
+            <p>33</p>
+            <small class="positive">+35%</small>
+        </div>
+        <div class="card">
+            <h4>Vendas por Pedido</h4>
+            <p>R$37,41</p>
+            <small class="positive">+21%</small>
+        </div>
+        <div class="card">
+            <h4>Repasses</h4>
+            <p>R$901,23</p>
+            <small class="neutral">Em tempo real</small>
+        </div>
+        <div class="card">
+            <h4>Repasses Agendados</h4>
+            <p>R$4.567,89</p>
+            <small class="neutral">Previsto para 01/10</small>
+        </div>
+    </div>
+
+    <!-- Seletor de Métricas e Gráfico -->
+    <div class="performance-metrics">
+        <h4>Desempenho</h4>
+        <div class="metric-selector">
+            <label><input type="checkbox" checked> Total de Vendas</label>
+            <label><input type="checkbox" checked> Total de Pedidos</label>
+            <label><input type="checkbox"> Despesas Operacionais</label>
+            <label><input type="checkbox"> Lucro Bruto</label>
+            <label><input type="checkbox"> Cancelamentos</label>
+        </div>
+        <!-- Gráfico de Desempenho (placeholder) -->
+        <canvas id="performanceChart"></canvas>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/assets/js/analiseDesempenho.js"></script> 
+    
+
 </div>        

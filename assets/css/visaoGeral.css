@@ -103,6 +103,42 @@
     border-left: 4px solid #BF000E;
 }
 
+/* Header & Seletor de períodos */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-container h1 {
+    margin: 0;
+}
+
+.description h3 {
+    color: #333;
+    margin: 0;
+}
+
+.period-container {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.period-container label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.date-picker {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
 /* Conteúdo principal */
 .main-content {
     margin-left: 270px;
@@ -110,7 +146,7 @@
 }
 
 /* Cards Visão Geral*/
-.cards-box {
+.cards-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
@@ -125,7 +161,8 @@
     border-radius: 8px;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .positive {
@@ -136,8 +173,14 @@
     color: red;
 }
 
+.neutral {
+    color: gray;
+}
+
+/* Animação ao passar o mouse sobre os cards */
 .card:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .search-container {
@@ -225,41 +268,6 @@
     cursor: pointer;
 }
 
-/* Header & Seletor de períodos */
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.header-container h1 {
-    margin: 0;
-}
-
-.description h3 {
-    color: #333;
-    margin: 0;
-}
-
-.period-container {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.period-container label {
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.date-picker {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-}
 
 /* Janela Modal (Ver Detalhes) */
 .modal-header {

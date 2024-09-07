@@ -7,19 +7,23 @@ function showMainTab(tabId) {
     // Mostra a aba principal selecionada
     document.getElementById(tabId).style.display = 'block';
 
-    // Remove a classe 'active' de todas as abas principais
+    // Remove a classe 'active' de todas as abas do menu
     document.querySelectorAll('.nav-link').forEach(function(tab) {
         tab.classList.remove('active');
     });
 
     // Adiciona a classe 'active' à aba principal selecionada
-    event.target.classList.add('active');
+    const selectedTab = document.querySelector(`.nav-link[href*="${tabId}.html"]`);
+    if (selectedTab) {
+        selectedTab.classList.add('active');
+    }
 
     // Garante que a aba "A Receber" esteja ativa ao selecionar "Visão Geral"
     if (tabId === 'visaoGeral') {
         showPedidosTab('aReceber');
     }
 }
+
 
 function showPedidosTab(tabId) {
     // Esconde todas as abas de pedidos
