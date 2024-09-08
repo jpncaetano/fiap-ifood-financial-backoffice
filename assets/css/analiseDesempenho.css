@@ -245,6 +245,37 @@
     margin: 0 auto; 
 }
 
+/* Estilo para o container de legendas */
+#legendContainer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#legendContainer div {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+#legendContainer span {
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+/* Estilo para a bolinha antes da legenda */
+#legendContainer div::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 8px;
+    border-radius: 25%;
+}
+
+
+
 /* Responsividade */
 @media (max-width: 992px) {
     .main-content {

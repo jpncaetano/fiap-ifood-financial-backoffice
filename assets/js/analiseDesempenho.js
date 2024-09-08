@@ -28,7 +28,7 @@ window.onload = function() {
         data: {
             labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6', 'Dia 7'],
             datasets: [
-                { label: 'Total de Vendas', data: [1200, 1500, 900, 1800, 1300, 1600, 2000], borderColor: 'green', borderWidth: 2, fill: false, hidden: false},
+                { label: 'Total de Vendas', data: [1200, 1500, 900, 1800, 1300, 1600, 2000], borderColor: 'green', borderWidth: 2, fill: false, hidden: false },
                 { label: 'Total de Pedidos', data: [30, 45, 25, 60, 40, 50, 70], borderColor: 'blue', borderWidth: 2, fill: false, hidden: true },
                 { label: 'Despesas Operacionais', data: [500, 600, 700, 800, 900, 400, 300], borderColor: 'red', borderWidth: 2, fill: false, hidden: true },
                 { label: 'Lucro Bruto', data: [400, 500, 600, 700, 800, 900, 1000], borderColor: 'purple', borderWidth: 2, fill: false, hidden: true },
@@ -51,8 +51,7 @@ window.onload = function() {
             },
             plugins: {
                 legend: {
-                    position: 'bottom',
-                    onClick: null,
+                    display: false // Ocultar as legendas automáticas
                 }
             }
         }
@@ -69,112 +68,48 @@ window.onload = function() {
         return true;
     }
 
-    // Conectando os checkbox aos datasets e adicionando a verificação
-    document.getElementById('total-vendas').addEventListener('change', function() {
-        if (checkAtLeastOne() || this.checked) {
-            performanceChart.data.datasets[0].hidden = !this.checked;
+    // Função para atualizar a visibilidade dos datasets e das legendas
+    function updateChart(datasetIndex, checkbox) {
+        if (checkAtLeastOne() || checkbox.checked) {
+            performanceChart.data.datasets[datasetIndex].hidden = !checkbox.checked;
             performanceChart.update();
+            updateLegend();
         } else {
-            this.checked = true;
+            checkbox.checked = true; // Se nenhum outro checkbox estiver selecionado, manter o atual como selecionado
         }
-    });
+    }
+
+    // Função para atualizar as legendas dinamicamente
+    function updateLegend() {
+        const legendContainer = document.getElementById('legendContainer');
+        legendContainer.innerHTML = ''; // Limpar o container de legendas
     
-    document.getElementById('total-pedidos').addEventListener('change', function() {
-        if (checkAtLeastOne() || this.checked) {
-            performanceChart.data.datasets[1].hidden = !this.checked;
-            performanceChart.update();
-        } else {
-            this.checked = true;
-        }
-    });
+        performanceChart.data.datasets.forEach((dataset, index) => {
+            if (!dataset.hidden) {
+                // Criar uma nova legenda apenas para datasets visíveis
+                const legendItem = document.createElement('div');
+                legendItem.innerHTML = `<span style="color:${dataset.borderColor};">
+                <span style="background-color:${dataset.borderColor}; display: inline-block; width: 12px; height: 12px; border-radius: 20%; margin-right: 8px;"></span>
+                ${dataset.label}
+            </span>`;
+                legendContainer.appendChild(legendItem);
+            }
+        });
+    }
     
-    document.getElementById('despesas-operacionais').addEventListener('change', function() {
-        if (checkAtLeastOne() || this.checked) {
-            performanceChart.data.datasets[2].hidden = !this.checked;
-            performanceChart.update();
-        } else {
-            this.checked = true;
-        }
+
+    // Criar o container de legendas dinâmicas
+    const legendContainer = document.createElement('div');
+    legendContainer.id = 'legendContainer';
+    document.querySelector('.main-content').appendChild(legendContainer); // Adicionar após o gráfico
+
+    // Associando os checkboxes com as legendas e datasets
+    document.querySelectorAll('.metric-checkbox').forEach((checkbox, index) => {
+        checkbox.addEventListener('change', function() {
+            updateChart(index, this);
+        });
     });
 
-    document.getElementById('lucro-bruto').addEventListener('change', function() {
-        if (checkAtLeastOne() || this.checked) {
-            performanceChart.data.datasets[3].hidden = !this.checked;
-            performanceChart.update();
-        } else {
-            this.checked = true;
-        }
-    });
-
-    document.getElementById('cancelamentos').addEventListener('change', function() {
-        if (checkAtLeastOne() || this.checked) {
-            performanceChart.data.datasets[4].hidden = !this.checked;
-            performanceChart.update();
-        } else {
-            this.checked = true;
-        }
-    });
-
-    document.getElementById('receita-por-pedidos').addEventListener('change', function() {
-        if (checkAtLeastOne() || this.checked) {
-            performanceChart.data.datasets[5].hidden = !this.checked;
-            performanceChart.update();
-        } else {
-            this.checked = true;
-        }
-    });
-
-    document.getElementById('lucro-liquido').addEventListener('change', function() {
-        if (checkAtLeastOne() || this.checked) {
-            performanceChart.data.datasets[6].hidden = !this.checked;
-            performanceChart.update();
-        } else {
-            this.checked = true;
-        }
-    });
-
-    document.getElementById('pagamentos-recebidos').addEventListener('change', function() {
-        if (checkAtLeastOne() || this.checked) {
-            performanceChart.data.datasets[7].hidden = !this.checked;
-            performanceChart.update();
-        } else {
-            this.checked = true;
-        }
-    });
-
-    document.getElementById('pagamentos-pendentes').addEventListener('change', function() {
-        if (checkAtLeastOne() || this.checked) {
-            performanceChart.data.datasets[8].hidden = !this.checked;
-            performanceChart.update();
-        } else {
-            this.checked = true;
-        }
-    });
-
-    document.getElementById('crescimento-vendas').addEventListener('change', function() {
-        if (checkAtLeastOne() || this.checked) {
-            performanceChart.data.datasets[9].hidden = !this.checked;
-            performanceChart.update();
-        } else {
-            this.checked = true;
-        }
-    });
-
-    document.getElementById('ticket-medio').addEventListener('change', function() {
-        if (checkAtLeastOne() || this.checked) {
-            performanceChart.data.datasets[10].hidden = !this.checked;
-            performanceChart.update();
-        } else {
-            this.checked = true;
-        }
-    });
-
-    document.getElementById('reembolsos').addEventListener('change', function() {
-        if (checkAtLeastOne() || this.checked) {
-            performanceChart.data.datasets[11].hidden = !this.checked;
-            performanceChart.update();
-        } else {
-            this.checked = true;
-        }
-    });
-}
+    // Atualizar a legenda pela primeira vez
+    updateLegend();
+};
