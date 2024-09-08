@@ -58,15 +58,54 @@ window.onload = function() {
     });
 
     // Função para verificar se há pelo menos um checkbox selecionado
-    function checkAtLeastOne() {
-        const checkboxes = document.querySelectorAll('.metric-checkbox');
-        const checked = Array.from(checkboxes).some(cb => cb.checked);
-        if (!checked) {
-            alert('Pelo menos 1 métrica deve ser selecionada');
-            return false;
-        }
-        return true;
+    const maxCheckboxes = 6;
+
+function checkAtLeastOne() {
+    const checkboxes = document.querySelectorAll('.metric-checkbox');
+    const checkedCheckboxes = Array.from(checkboxes).filter(cb => cb.checked);
+    
+    // Verificar se há pelo menos 1 checkbox marcado
+    if (checkedCheckboxes.length === 0) {
+        alert('Pelo menos 1 métrica deve ser selecionada');
+        return false;
     }
+    
+    return true;
+}
+
+function checkMaxLimit() {
+    const checkboxes = document.querySelectorAll('.metric-checkbox');
+    const checkedCheckboxes = Array.from(checkboxes).filter(cb => cb.checked);
+    
+    // Verificar se o limite de 5 checkboxes foi atingido
+    if (checkedCheckboxes.length >= maxCheckboxes) {
+        alert('Você só pode selecionar até 5 métricas');
+        return false;
+    }
+    
+    return true;
+}
+
+document.querySelectorAll('.metric-checkbox').forEach((checkbox, index) => {
+    checkbox.addEventListener('change', function() {
+        const isChecked = this.checked;
+        
+        // Se o checkbox está sendo marcado, verificar se o limite foi atingido
+        if (isChecked && !checkMaxLimit()) {
+            this.checked = false; // Desmarca o checkbox se o limite foi atingido
+            return;
+        }
+        
+        // Se o checkbox está sendo desmarcado, verificar se pelo menos 1 checkbox está selecionado
+        if (!isChecked && !checkAtLeastOne()) {
+            this.checked = true; // Reforçar que pelo menos 1 checkbox precisa estar marcado
+            return;
+        }
+        
+        // Atualizar o gráfico com base no checkbox
+        updateChart(index, this);
+    });
+});
 
     // Função para atualizar a visibilidade dos datasets e das legendas
     function updateChart(datasetIndex, checkbox) {
@@ -96,7 +135,6 @@ window.onload = function() {
             }
         });
     }
-    
 
     // Criar o container de legendas dinâmicas
     const legendContainer = document.createElement('div');

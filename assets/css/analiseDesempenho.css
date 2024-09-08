@@ -160,10 +160,10 @@
     border-radius: 8px;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidade */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    flex: 1; /* Faz com que todos os cards tenham a mesma largura */
-    max-width: 220px; /* Define a largura máxima dos cards */
+    flex: 1;
+    max-width: 220px;
 }
 
 .card h4 {
@@ -199,19 +199,18 @@
 
 /* Estilo para o cabeçalho de "Desempenho" */
 .performance-header h2 {
-    margin-top: 50px;
+    margin-top: 20px;
     margin-bottom: 20px;
     color: #333;
 }
 
 /* Estilo para o subtítulo "Selecione as Métricas" */
 .metric-selector-header h6 {
-    font-size: 1.2rem;
-    font-weight: normal;
-    margin-bottom: 5px; /* Ajuste a margem para movê-lo para baixo */
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
     color: #555;
 }
-
 
 /* Seletor de Métricas */
 .performance-metrics {
@@ -221,27 +220,32 @@
 .metric-selector {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .metric-selector label {
     background-color: #f9f9f9;
-    padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    width: calc(16.66% - 10px);
+    padding: 5px;
 }
 
 .metric-selector input[type="checkbox"] {
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
+/* Gráfico */
 #performanceChart {
-    width: 90%; 
-    height: 300px; 
-    max-width: 800px;
+    height: 100%;
+    width: 100%;
+    max-width: 90%;
+    max-height:37%;
     margin: 0 auto; 
 }
 
@@ -249,13 +253,13 @@
 #legendContainer {
     margin-top: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
 #legendContainer div {
     margin-bottom: 5px;
-    display: flex;
     align-items: center;
 }
 
@@ -263,18 +267,6 @@
     font-weight: bold;
     margin-left: 5px;
 }
-
-/* Estilo para a bolinha antes da legenda */
-#legendContainer div::before {
-    content: '';
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin-right: 8px;
-    border-radius: 25%;
-}
-
-
 
 /* Responsividade */
 @media (max-width: 992px) {
