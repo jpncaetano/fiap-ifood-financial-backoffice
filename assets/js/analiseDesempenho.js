@@ -1,26 +1,5 @@
-function showMainTab(tabId) {
-    // Esconde todas as abas principais
-    document.querySelectorAll('.tab-content').forEach(function(content) {
-        content.style.display = 'none';
-    });
-
-    // Mostra a aba principal selecionada
-    document.getElementById(tabId).style.display = 'block';
-
-    // Remove a classe 'active' de todas as abas principais
-    document.querySelectorAll('.nav-link').forEach(function(tab) {
-        tab.classList.remove('active');
-    });
-
-    // Adiciona a classe 'active' à aba principal selecionada
-    const selectedTab = document.querySelector(`.nav-link[href*="${tabId}.html"]`);
-    if (selectedTab) {
-        selectedTab.classList.add('active');
-    }
-}
-
 // Inicializando o gráfico de desempenho
-window.onload = function() {
+window.onload = function () {
     var ctx = document.getElementById('performanceChart').getContext('2d');
 
     const performanceChart = new Chart(ctx, {
@@ -60,52 +39,52 @@ window.onload = function() {
     // Função para verificar se há pelo menos um checkbox selecionado
     const maxCheckboxes = 6;
 
-function checkAtLeastOne() {
-    const checkboxes = document.querySelectorAll('.metric-checkbox');
-    const checkedCheckboxes = Array.from(checkboxes).filter(cb => cb.checked);
-    
-    // Verificar se há pelo menos 1 checkbox marcado
-    if (checkedCheckboxes.length === 0) {
-        alert('Pelo menos 1 métrica deve ser selecionada');
-        return false;
-    }
-    
-    return true;
-}
+    function checkAtLeastOne() {
+        const checkboxes = document.querySelectorAll('.metric-checkbox');
+        const checkedCheckboxes = Array.from(checkboxes).filter(cb => cb.checked);
 
-function checkMaxLimit() {
-    const checkboxes = document.querySelectorAll('.metric-checkbox');
-    const checkedCheckboxes = Array.from(checkboxes).filter(cb => cb.checked);
-    
-    // Verificar se o limite de 5 checkboxes foi atingido
-    if (checkedCheckboxes.length >= maxCheckboxes) {
-        alert('Você só pode selecionar até 5 métricas');
-        return false;
-    }
-    
-    return true;
-}
+        // Verificar se há pelo menos 1 checkbox marcado
+        if (checkedCheckboxes.length === 0) {
+            alert('Pelo menos 1 métrica deve ser selecionada');
+            return false;
+        }
 
-document.querySelectorAll('.metric-checkbox').forEach((checkbox, index) => {
-    checkbox.addEventListener('change', function() {
-        const isChecked = this.checked;
-        
-        // Se o checkbox está sendo marcado, verificar se o limite foi atingido
-        if (isChecked && !checkMaxLimit()) {
-            this.checked = false; // Desmarca o checkbox se o limite foi atingido
-            return;
+        return true;
+    }
+
+    function checkMaxLimit() {
+        const checkboxes = document.querySelectorAll('.metric-checkbox');
+        const checkedCheckboxes = Array.from(checkboxes).filter(cb => cb.checked);
+
+        // Verificar se o limite de 5 checkboxes foi atingido
+        if (checkedCheckboxes.length >= maxCheckboxes) {
+            alert('Você só pode selecionar até 5 métricas');
+            return false;
         }
-        
-        // Se o checkbox está sendo desmarcado, verificar se pelo menos 1 checkbox está selecionado
-        if (!isChecked && !checkAtLeastOne()) {
-            this.checked = true; // Reforçar que pelo menos 1 checkbox precisa estar marcado
-            return;
-        }
-        
-        // Atualizar o gráfico com base no checkbox
-        updateChart(index, this);
+
+        return true;
+    }
+
+    document.querySelectorAll('.metric-checkbox').forEach((checkbox, index) => {
+        checkbox.addEventListener('change', function () {
+            const isChecked = this.checked;
+
+            // Se o checkbox está sendo marcado, verificar se o limite foi atingido
+            if (isChecked && !checkMaxLimit()) {
+                this.checked = false; // Desmarca o checkbox se o limite foi atingido
+                return;
+            }
+
+            // Se o checkbox está sendo desmarcado, verificar se pelo menos 1 checkbox está selecionado
+            if (!isChecked && !checkAtLeastOne()) {
+                this.checked = true; // Reforçar que pelo menos 1 checkbox precisa estar marcado
+                return;
+            }
+
+            // Atualizar o gráfico com base no checkbox
+            updateChart(index, this);
+        });
     });
-});
 
     // Função para atualizar a visibilidade dos datasets e das legendas
     function updateChart(datasetIndex, checkbox) {
@@ -122,7 +101,7 @@ document.querySelectorAll('.metric-checkbox').forEach((checkbox, index) => {
     function updateLegend() {
         const legendContainer = document.getElementById('legendContainer');
         legendContainer.innerHTML = ''; // Limpar o container de legendas
-    
+
         performanceChart.data.datasets.forEach((dataset, index) => {
             if (!dataset.hidden) {
                 // Criar uma nova legenda apenas para datasets visíveis
@@ -143,7 +122,7 @@ document.querySelectorAll('.metric-checkbox').forEach((checkbox, index) => {
 
     // Associando os checkboxes com as legendas e datasets
     document.querySelectorAll('.metric-checkbox').forEach((checkbox, index) => {
-        checkbox.addEventListener('change', function() {
+        checkbox.addEventListener('change', function () {
             updateChart(index, this);
         });
     });

@@ -1,33 +1,6 @@
-function showMainTab(tabId) {
-    // Esconde todas as abas principais
-    document.querySelectorAll('.tab-content').forEach(function(content) {
-        content.style.display = 'none';
-    });
-
-    // Mostra a aba principal selecionada
-    document.getElementById(tabId).style.display = 'block';
-
-    // Remove a classe 'active' de todas as abas do menu
-    document.querySelectorAll('.nav-link').forEach(function(tab) {
-        tab.classList.remove('active');
-    });
-
-    // Adiciona a classe 'active' à aba principal selecionada
-    const selectedTab = document.querySelector(`.nav-link[href*="${tabId}.html"]`);
-    if (selectedTab) {
-        selectedTab.classList.add('active');
-    }
-
-    // Garante que a aba "A Receber" esteja ativa ao selecionar "Visão Geral"
-    if (tabId === 'visaoGeral') {
-        showPedidosTab('aReceber');
-    }
-}
-
-
 function showPedidosTab(tabId) {
     // Esconde todas as abas de pedidos
-    document.querySelectorAll('.pedidos-tab-content').forEach(function(content) {
+    document.querySelectorAll('.pedidos-tab-content').forEach(function (content) {
         content.style.display = 'none';
     });
 
@@ -35,7 +8,7 @@ function showPedidosTab(tabId) {
     document.getElementById(tabId).style.display = 'block';
 
     // Remove a classe 'active' de todas as abas de pedidos
-    document.querySelectorAll('.tab').forEach(function(tab) {
+    document.querySelectorAll('.tab').forEach(function (tab) {
         tab.classList.remove('active');
     });
 
@@ -52,7 +25,7 @@ function searchTable() {
 
     // Verifica qual aba está ativa
     var activeTab = document.querySelector('.pedidos-tab-content:not([style*="display: none"])');
-    
+
     if (activeTab) {
         table = activeTab.querySelector(".table");
         tr = table.getElementsByTagName("tr");
@@ -74,9 +47,8 @@ function searchTable() {
     }
 }
 
-
 // Exibe a aba "A Receber" por padrão ao carregar a página
-window.onload = function() {
+window.onload = function () {
     showPedidosTab('aReceber');
 }
 
