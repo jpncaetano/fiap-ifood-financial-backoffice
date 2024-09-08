@@ -148,21 +148,28 @@
 /* Cards Visão Geral*/
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 0.5fr);
     gap: 20px;
-    background-color: #f8f9fa;
-    padding: 20px;
+    padding: 5px;
     border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .card {
     background-color: #fff;
     border-radius: 8px;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 90%;
+}
+.card h3{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card h4 {
+    font-size: 1.4rem;
 }
 
 .positive {
