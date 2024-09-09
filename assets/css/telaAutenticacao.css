@@ -23,10 +23,10 @@ h5 {
 
 /* Estilo do logo */
 .logo {
-    max-height: 5vh; 
-    width: auto; 
-    margin: 0 auto; 
-    display: block; 
+    max-height: 5vh;
+    width: auto;
+    margin: 0 auto;
+    display: block;
     cursor: pointer;
     position: relative;
     z-index: 1000;
@@ -80,7 +80,7 @@ h5 {
     padding-left: 50px;
     padding-right: 50px;
     flex-grow: 1;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 
 .intro-text {
@@ -99,15 +99,35 @@ h5 {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
+
+/* Modal */
+.modal-header {
+    background-color: #BF000E;
+    color: #fff;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    background-color: #f9f9f9;
+}
+
 
 
 /* Tornando o layout responsivo para telas até 1366px */
 @media (max-width: 1366px) {
     .logo {
-        margin-left: 8.33%; 
+        margin-left: 8.33%;
     }
 
     .intro-text {
@@ -116,29 +136,30 @@ h5 {
     }
 
     .verification-card {
-        width: 35.3%; 
+        width: 35.3%;
         margin-top: 20px;
     }
 
     .container-fluid {
         flex-direction: column;
-        padding: 2.6%; 
+        padding: 2.6%;
         margin-top: 0;
     }
 }
 
 @media (max-width: 992px) {
     .logo {
-        margin-left: 5%; 
+        margin-left: 5%;
     }
 
-    .intro-text, .verification-card {
+    .intro-text,
+    .verification-card {
         max-width: 100%;
         text-align: center;
     }
 
     .verification-card {
-        width: 90%; 
+        width: 90%;
     }
 }
 
