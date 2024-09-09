@@ -16,7 +16,7 @@
         rel="stylesheet">
 
     <!-- CSS Personalizado -->
-    <link rel="stylesheet" href="/assets/css/analiseDesempenho.css">
+    <link rel="stylesheet" href="../css/analiseDesempenho.css">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="/assets/pages/index.html">
-            <img src="/assets/images/logoVermelho.png" alt="iFood" class="logo">
+            <img src="../images/logoIfoodVermelho.png" alt="iFood" class="logo">
         </a>
         <ul class="nav flex-column">
             <!-- Nome do Restaurante -->
@@ -47,11 +47,11 @@
             <li class="nav-item">
                 <span class="nav-link menu-pai">Financeiro</span>
                 <ul class="submenu">
-                    <li><a class="nav-link" href="/assets/pages/visaoGeral.html">Visão Geral</a></li>
-                    <li><a class="nav-link active" href="/assets/pages/analiseDesempenho.html">Análise de Desempenho</a>
+                    <li><a class="nav-link" href="./visaoGeral.html">Visão Geral</a></li>
+                    <li><a class="nav-link active" href="./analiseDesempenho.html">Análise de Desempenho</a>
                     </li>
-                    <li><a class="nav-link" href="/assets/pages/transacoes.html">Transações</a></li>
-                    <li><a class="nav-link" href="/assets/pages/nfe.html">NF-e</a></li>
+                    <li><a class="nav-link" href="./transacoes.html">Transações</a></li>
+                    <li><a class="nav-link" href="./nfe.html">NF-e</a></li>
                 </ul>
             </li>
         </ul>
@@ -127,9 +127,9 @@
             <label><input type="checkbox" id="reembolso" class="metric-checkbox"> Reembolsos</label>
         </div>
 
-        <!-- Gráfico de Desempenho (placeholder) -->
+        <!-- Gráfico de Desempenho -->
         <canvas id="performanceChart"></canvas>
 
         <!-- JavaScript -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="/assets/js/analiseDesempenho.js"></script>
+        <script src="../js/analiseDesempenho.js"></script>
