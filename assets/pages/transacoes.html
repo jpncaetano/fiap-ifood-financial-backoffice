@@ -106,6 +106,79 @@
             </div>
         </div>
 
+        <!-- Tabela de Transações -->
+        <div class="table-container">
+            <h2>Transações</h2>
+            <div class="tabs">
+                <button id="filtroTodos" class="tab active">Todos</button>
+                <button id="filtroEntrada" class="tab">Entradas</button>
+                <button id="filtroSaida" class="tab">Saídas</button>
+            </div>
+
+            <!-- Barra de Pesquisa -->
+            <div class="search-container">
+                <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Buscar transações...">
+            </div>
+
+            <!-- Tabela de Transações -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Descrição</th>
+                        <th>ID Pedido</th>
+                        <th>Movimentação</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody id="transacoesTableBody">
+                    <tr>
+                        <td>15/05/2024</td>
+                        <td>Renda do Pedido #0001</td>
+                        <td>0001</td>
+                        <td>Entrada</td>
+                        <td>+R$76,03</td>
+                    </tr>
+                    <tr>
+                        <td>15/05/2024</td>
+                        <td>Renda do Pedido #0002</td>
+                        <td>0002</td>
+                        <td>Entrada</td>
+                        <td>+R$32,57</td>
+                    </tr>
+                    <tr>
+                        <td>14/05/2024</td>
+                        <td>Renda do Pedido #0003</td>
+                        <td>0003</td>
+                        <td>Entrada</td>
+                        <td>+R$43,14</td>
+                    </tr>
+                    <tr>
+                        <td>13/05/2024</td>
+                        <td>Renda do Pedido #0004</td>
+                        <td>0004</td>
+                        <td>Entrada</td>
+                        <td>+R$89,37</td>
+                    </tr>
+                    <tr>
+                        <td>12/05/2024</td>
+                        <td>Saque para conta Nubank **** 1234</td>
+                        <td>0005</td>
+                        <td>Saída</td>
+                        <td>-R$3.000,00</td>
+                    </tr>
+                    <tr>
+                        <td>11/05/2024</td>
+                        <td>Renda do Pedido #0005</td>
+                        <td>0006</td>
+                        <td>Entrada</td>
+                        <td>+R$52,87</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
         <!-- Bootstrap -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -115,4 +188,5 @@
         <script src="/assets/js/transacoes.js"></script>
 
 </body>
+
 </html>
