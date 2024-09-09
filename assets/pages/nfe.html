@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financeiro - Meu Restaurante</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="/assets/css/nfe.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="/assets/pages/index.html">
+            <img src="/assets/images/logoVermelho.png" alt="iFood" class="logo">
+        </a>
+        <ul class="nav flex-column">
+            <!-- Nome do Restaurante -->
+            <li class="nav-item">
+                <a class="nav-link" href="#">Restaurante do João</a>
+            </li>
+
+            <!-- Status da Loja -->
+            <li class="nav-item">
+                <div class="status-box">
+                    <span class="status-circle"></span>
+                    <div class="status-text">
+                        <span class="status-label">Loja aberta</span>
+                        <span class="status-description">Dentro do horário programado</span>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Menu Financeiro -->
+            <li class="nav-item">
+                <span class="nav-link menu-pai">Financeiro</span>
+                <ul class="submenu">
+                    <li><a class="nav-link" href="/assets/pages/visaoGeral.html">Visão Geral</a></li>
+                    <li><a class="nav-link" href="/assets/pages/analiseDesempenho.html">Análise de Desempenho</a></li>
+                    <li><a class="nav-link" href="/assets/pages/transacoes.html">Transações</a></li>
+                    <li><a class="nav-link active" href="/assets/pages/nfe.html">NF-e</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <div class="main-content">
+        <div class="header-container">
+            <h1>Financeiro</h1>
+
+            <!-- Seletor de Período -->
+            <div class="period-container">
+                <label for="periodo">Período dos Dados:</label>
+                <input type="date" id="periodo" name="periodo" class="date-picker">
+            </div>
+        </div>
+        <div class="description">
+            <h3>Nota Fiscal Eletrônica</h3>
+        </div>
+        <!-- Tabela de Notas Fiscais -->
+        <div class="table-container">
+
+            <!-- Barra de Pesquisa -->
+            <div class="search-container">
+                <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Buscar NF-e...">
+            </div>
+
+            <!-- Tabela de NF-e -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Data de Emissão</th>
+                        <th>Número da NF-e</th>
+                        <th>Descrição</th> <!-- Nova coluna de Descrição -->
+                        <th>Valor</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10/09/2024</td>
+                        <td>123456</td>
+                        <td>Anúncios Pagos</td> <!-- Descrição -->
+                        <td>R$1.500,00</td>
+                        <td>Emitida</td>
+                        <td><a href="#" class="ver-nfe-link">Ver NF-e</a></td>
+                    </tr>
+                    <tr>
+                        <td>08/09/2024</td>
+                        <td>987654</td>
+                        <td>Taxas de Serviço</td> <!-- Descrição -->
+                        <td>R$1.200,00</td>
+                        <td>Emitida</td>
+                        <td><a href="#" class="ver-nfe-link">Ver NF-e</a></td>
+                    </tr>
+                    <tr>
+                        <td>05/09/2024</td>
+                        <td>543123</td>
+                        <td>Outros</td> <!-- Descrição -->
+                        <td>R$800,00</td>
+                        <td>Cancelada</td>
+                        <td><a href="#" class="ver-nfe-link">Ver NF-e</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Modal de Detalhes da NF-e -->
+            <div id="modalNfe" class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Detalhes da Nota Fiscal Eletrônica</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p><strong>Número da NF-e:</strong> <span id="nfeNumber"></span></p>
+                            <p><strong>Data de Emissão:</strong> <span id="nfeDate"></span></p>
+                            <p><strong>Descrição:</strong> <span id="nfeDescription"></span></p>
+                            <p><strong>Valor:</strong> <span id="nfeValue"></span></p>
+                            <p><strong>Status:</strong> <span id="nfeStatus"></span></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Bootstrap -->
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+            <!-- JavaScript -->
+            <script src="/assets/js/nfe.js"></script>
+
+</body>
+
+</html>
