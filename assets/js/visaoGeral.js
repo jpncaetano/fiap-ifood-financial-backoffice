@@ -1,68 +1,66 @@
-function showPedidosTab(tabId) {
-    // Esconde todas as abas de pedidos
-    document.querySelectorAll('.pedidos-tab-content').forEach(function (content) {
-        content.style.display = 'none';
+// Função para abrir o modal de detalhes dos pedidos
+function abrirModalDetalhesPedido(campos) {
+    // Preenche os campos no modal
+    for (let campoId in campos) {
+        document.getElementById(campoId).textContent = campos[campoId];
+    }
+    // Abre o modal
+    $('#modalDetalhes').modal('show');
+}
+
+// Inicializa os eventos da página Visão Geral
+document.addEventListener('DOMContentLoaded', function () {
+    // Exibe a aba "A Receber" por padrão
+    togglePedidosTab('aReceber');
+
+    // Adiciona evento para alternar entre as abas
+    document.querySelectorAll('.tab').forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            // Extrai o id da aba do atributo onclick
+            const tabId = this.getAttribute('onclick').match(/'(.*)'/)[1];
+            togglePedidosTab(tabId);
+        });
     });
+});
 
-    // Mostra a aba de pedidos selecionada
-    document.getElementById(tabId).style.display = 'block';
-
-    // Remove a classe 'active' de todas as abas de pedidos
+// Função para alternar entre as abas "A Receber" e "Pedidos Pagos"
+function togglePedidosTab(tabId) {
+    // Remove a classe "active" de todas as abas
     document.querySelectorAll('.tab').forEach(function (tab) {
         tab.classList.remove('active');
     });
 
-    // Adiciona a classe 'active' à aba de pedidos selecionada
-    const tabElement = document.querySelector('.tab[onclick="showPedidosTab(\'' + tabId + '\')"]');
-    tabElement.classList.add('active');
+    // Esconde o conteúdo de todas as abas
+    document.querySelectorAll('.pedidos-tab-content').forEach(function (content) {
+        content.style.display = 'none';
+    });
+
+    // Adiciona a classe "active" à aba selecionada e exibe o conteúdo correspondente
+    document.querySelector(`[onclick*="${tabId}"]`).classList.add('active');
+    document.getElementById(tabId).style.display = 'block';
 }
 
-function searchTable() {
-    // Declaração de variáveis
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("searchInput");
-    filter = input.value.toUpperCase();
+// Função para filtrar pedidos na tabela da Visão Geral
+function searchPedidosTable() {
+    const input = document.getElementById("searchInput");
+    const filter = input.value.toUpperCase();
+    
+    // Seleciona a tabela da aba ativa (A Receber ou Pedidos Pagos)
+    const table = document.querySelector('.tab-content.pedidos-tab-content:not([style*="display: none"]) .table');
+    const tr = table.getElementsByTagName("tr");
 
-    // Verifica qual aba está ativa
-    var activeTab = document.querySelector('.pedidos-tab-content:not([style*="display: none"])');
-
-    if (activeTab) {
-        table = activeTab.querySelector(".table");
-        tr = table.getElementsByTagName("tr");
-
-        // Loop sobre todas as linhas da tabela e oculta as que não correspondem à consulta de pesquisa
-        for (i = 1; i < tr.length; i++) {
-            tr[i].style.display = "none";
-            td = tr[i].getElementsByTagName("td");
-            for (var j = 0; j < td.length; j++) {
-                if (td[j]) {
-                    txtValue = td[j].textContent || td[j].innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                        break;
-                    }
+    // Filtra os pedidos com base no input da busca
+    for (let i = 1; i < tr.length; i++) {
+        tr[i].style.display = "none";
+        const td = tr[i].getElementsByTagName("td");
+        for (let j = 0; j < td.length; j++) {
+            if (td[j]) {
+                const txtValue = td[j].textContent || td[j].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                    break;
                 }
             }
         }
     }
-}
-
-// Exibe a aba "A Receber" por padrão ao carregar a página
-window.onload = function () {
-    showPedidosTab('aReceber');
-}
-
-// Função para abrir a modal e preencher com os detalhes do pedido
-function abrirModalDetalhes(pedidoId, produto, quantidade, subtotal, comissao, cupons, repasse, liquido, metodoPagamento) {
-    document.getElementById('modalPedidoId').textContent = pedidoId;
-    document.getElementById('modalProduto').textContent = produto;
-    document.getElementById('modalQuantidade').textContent = quantidade;
-    document.getElementById('modalSubtotal').textContent = subtotal;
-    document.getElementById('modalComissao').textContent = comissao;
-    document.getElementById('modalCupons').textContent = cupons;
-    document.getElementById('modalRepasse').textContent = repasse;
-    document.getElementById('modalLiquido').textContent = liquido;
-    document.getElementById('modalMetodoPagamento').textContent = metodoPagamento;
-
-    $('#pedidoModal').modal('show');
 }

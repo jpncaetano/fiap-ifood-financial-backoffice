@@ -4,87 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financeiro - Meu Restaurante</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-        rel="stylesheet">
+    <title>NF-e</title>
 
     <!-- CSS Personalizado -->
-    <link rel="stylesheet" href="../css/nfe.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/modalAndCharts.css">
 </head>
 
 <body>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <a href="/index.html"">
-            <img src="../images/logoIfoodVermelho.png" alt="iFood" class="logo">
-        </a>
-        <ul class="nav flex-column">
-            <!-- Nome do Restaurante -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">Restaurante do João</a>
-            </li>
-
-            <!-- Status da Loja -->
-            <li class="nav-item">
-                <div class="status-box">
-                    <span class="status-circle"></span>
-                    <div class="status-text">
-                        <span class="status-label">Loja aberta</span>
-                        <span class="status-description">Dentro do horário programado</span>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Menu Financeiro -->
-            <li class="nav-item">
-                <span class="nav-link menu-pai">Financeiro</span>
-                <ul class="submenu">
-                    <li><a class="nav-link" href="./visaoGeral.html">Visão Geral</a></li>
-                    <li><a class="nav-link" href="./analiseDesempenho.html">Análise de Desempenho</a></li>
-                    <li><a class="nav-link" href="./transacoes.html">Transações</a></li>
-                    <li><a class="nav-link active" href="./nfe.html">NF-e</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+    <!-- Menu e Header carregados dinamicamente -->
+    <div id="menuHeader"></div>
 
     <!-- Conteúdo Principal -->
     <div class="main-content">
-        <div class="header-container">
-            <h1>Financeiro</h1>
-
-            <!-- Seletor de Período -->
-            <div class="period-container">
-                <label for="periodo">Período dos Dados:</label>
-                <input type="date" id="periodo" name="periodo" class="date-picker">
-            </div>
-        </div>
+        <div class="header-container"></div>
         <div class="description">
             <h3>Nota Fiscal Eletrônica</h3>
         </div>
+
         <!-- Tabela de Notas Fiscais -->
         <div class="table-container">
 
             <!-- Barra de Pesquisa -->
             <div class="search-container">
-                <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Buscar NF-e...">
+                <input type="text" id="searchInput" onkeyup="searchNfeTable()" placeholder="Buscar NF-e...">
             </div>
 
-            <!-- Tabela de NF-e -->
-            <table class="table">
+            <!-- Corpo da tabela -->
+            <table class="table nfe-table">
                 <thead>
                     <tr>
                         <th>Data de Emissão</th>
                         <th>Número da NF-e</th>
-                        <th>Descrição</th> <!-- Nova coluna de Descrição -->
+                        <th>Descrição</th>
                         <th>Valor</th>
                         <th>Status</th>
                         <th></th>
@@ -94,32 +46,50 @@
                     <tr>
                         <td>10/09/2024</td>
                         <td>123456</td>
-                        <td>Anúncios Pagos</td> <!-- Descrição -->
+                        <td>Anúncios Pagos</td>
                         <td>R$1.500,00</td>
                         <td>Emitida</td>
-                        <td><a href="#" class="ver-nfe-link">Ver NF-e</a></td>
+                        <td><a href="#" onclick="abrirModalDetalhesNfe({
+                            nfeNumber: '123456',
+                            nfeDate: '10/09/2024',
+                            nfeDescription: 'Anúncios Pagos',
+                            nfeValue: 'R$1.500,00',
+                            nfeStatus: 'Emitida'
+                        })">Ver NF-e</a></td>
                     </tr>
                     <tr>
                         <td>08/09/2024</td>
                         <td>987654</td>
-                        <td>Taxas de Serviço</td> <!-- Descrição -->
+                        <td>Taxas de Serviço</td>
                         <td>R$1.200,00</td>
                         <td>Emitida</td>
-                        <td><a href="#" class="ver-nfe-link">Ver NF-e</a></td>
+                        <td><a href="#" onclick="abrirModalDetalhesNfe({
+                            nfeNumber: '987654',
+                            nfeDate: '08/09/2024',
+                            nfeDescription: 'Taxas de Serviço',
+                            nfeValue: 'R$1.200,00',
+                            nfeStatus: 'Emitida'
+                        })">Ver NF-e</a></td>
                     </tr>
                     <tr>
                         <td>05/09/2024</td>
                         <td>543123</td>
-                        <td>Outros</td> <!-- Descrição -->
+                        <td>Outros</td>
                         <td>R$800,00</td>
                         <td>Cancelada</td>
-                        <td><a href="#" class="ver-nfe-link">Ver NF-e</a></td>
+                        <td><a href="#" onclick="abrirModalDetalhesNfe({
+                            nfeNumber: '543123',
+                            nfeDate: '05/09/2024',
+                            nfeDescription: 'Outros',
+                            nfeValue: 'R$800,00',
+                            nfeStatus: 'Cancelada'
+                        })">Ver NF-e</a></td>
                     </tr>
                 </tbody>
             </table>
 
-            <!-- Modal de Detalhes da NF-e -->
-            <div id="modalNfe" class="modal" tabindex="-1" role="dialog">
+            <!-- Modal Ver NF-e -->
+            <div id="modalNfe" class="modal fade" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -141,15 +111,16 @@
                     </div>
                 </div>
             </div>
+        </div>
 
+        <!-- Scripts JavaScript do Bootstrap e dependências -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-            <!-- Bootstrap -->
-            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-            <!-- JavaScript -->
-            <script src="../js/nfe.js"></script>
+        <!-- Scripts JavaScript Personalizados -->
+        <script src="/assets/js/menuHeader.js"></script>
+        <script src="/assets/js/nfe.js"></script>
 
 </body>
 

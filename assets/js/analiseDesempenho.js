@@ -1,3 +1,9 @@
+// Função para abrir o modal de alerta com uma mensagem personalizada
+function abrirAlertaModal(mensagem) {
+    document.getElementById('alertaModalBody').textContent = mensagem;
+    $('#alertaModal').modal('show');
+}
+
 // Inicializando o gráfico de desempenho
 window.onload = function () {
     var ctx = document.getElementById('performanceChart').getContext('2d');
@@ -37,7 +43,7 @@ window.onload = function () {
     });
 
     // Função para verificar se há pelo menos um checkbox selecionado
-    const maxCheckboxes = 6;
+    const maxCheckboxes = 5; // Definido para 5 métricas no máximo
 
     function checkAtLeastOne() {
         const checkboxes = document.querySelectorAll('.metric-checkbox');
@@ -45,7 +51,7 @@ window.onload = function () {
 
         // Verificar se há pelo menos 1 checkbox marcado
         if (checkedCheckboxes.length === 0) {
-            alert('Pelo menos 1 métrica deve ser selecionada');
+            abrirAlertaModal('Pelo menos 1 métrica deve ser selecionada');
             return false;
         }
 
@@ -57,8 +63,8 @@ window.onload = function () {
         const checkedCheckboxes = Array.from(checkboxes).filter(cb => cb.checked);
 
         // Verificar se o limite de 5 checkboxes foi atingido
-        if (checkedCheckboxes.length >= maxCheckboxes) {
-            alert('Você só pode selecionar até 5 métricas');
+        if (checkedCheckboxes.length > maxCheckboxes) {
+            abrirAlertaModal('Você só pode selecionar até 5 métricas');
             return false;
         }
 
@@ -119,13 +125,6 @@ window.onload = function () {
     const legendContainer = document.createElement('div');
     legendContainer.id = 'legendContainer';
     document.querySelector('.main-content').appendChild(legendContainer); // Adicionar após o gráfico
-
-    // Associando os checkboxes com as legendas e datasets
-    document.querySelectorAll('.metric-checkbox').forEach((checkbox, index) => {
-        checkbox.addEventListener('change', function () {
-            updateChart(index, this);
-        });
-    });
 
     // Atualizar a legenda pela primeira vez
     updateLegend();

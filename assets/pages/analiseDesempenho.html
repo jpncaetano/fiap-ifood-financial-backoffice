@@ -4,76 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financeiro - Meu Restaurante</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-        rel="stylesheet">
+    <title>Análise de Desempenho</title>
 
     <!-- CSS Personalizado -->
-    <link rel="stylesheet" href="../css/analiseDesempenho.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/modalAndCharts.css">
 </head>
 
 <body>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <a href="/assets/pages/index.html">
-            <img src="../images/logoIfoodVermelho.png" alt="iFood" class="logo">
-        </a>
-        <ul class="nav flex-column">
-            <!-- Nome do Restaurante -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">Restaurante do João</a>
-            </li>
-
-            <!-- Status da Loja -->
-            <li class="nav-item">
-                <div class="status-box">
-                    <span class="status-circle"></span>
-                    <div class="status-text">
-                        <span class="status-label">Loja aberta</span>
-                        <span class="status-description">Dentro do horário programado</span>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Menu Financeiro -->
-            <li class="nav-item">
-                <span class="nav-link menu-pai">Financeiro</span>
-                <ul class="submenu">
-                    <li><a class="nav-link" href="./visaoGeral.html">Visão Geral</a></li>
-                    <li><a class="nav-link active" href="./analiseDesempenho.html">Análise de Desempenho</a>
-                    </li>
-                    <li><a class="nav-link" href="./transacoes.html">Transações</a></li>
-                    <li><a class="nav-link" href="./nfe.html">NF-e</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+    <!-- Menu e Header carregados dinamicamente -->
+    <div id="menuHeader"></div>
 
     <!-- Conteúdo Principal -->
     <div class="main-content">
-        <div class="header-container">
-            <h1>Financeiro</h1>
-
-            <!-- Seletor de Período -->
-            <div class="period-container">
-                <label for="periodo">Período dos Dados:</label>
-                <input type="date" id="periodo" name="periodo" class="date-picker">
-            </div>
-        </div>
+        <div class="header-container"></div>
         <div class="description">
             <h3>Análise de Desempenho</h3>
         </div>
 
-        <!-- Cards Principais -->
-        <div class="cards-container">
+        <!-- Cards que mostram os principais indicadores financeiros -->
+        <div class="cards-container-analiseDesempenho">
             <div class="card">
                 <h3>Vendas</h3>
                 <h4>R$1.234,56</h4>
@@ -100,15 +50,17 @@
                 <small class="neutral">Previsto para 01/10</small>
             </div>
         </div>
-        <!-- Adicionando o novo cabeçalho "Desempenho" -->
+
+        <!-- Seção de Desempenho e Métricas -->
         <div class="performance-header">
             <h2>Desempenho</h2>
         </div>
-        <!-- Adicionando o subtítulo "Selecione as Métricas" -->
+
         <div class="metric-selector-header">
             <h6>Selecione as métricas:</h6>
         </div>
-        <!-- Seletor de Métricas e Gráfico -->
+
+        <!-- Seletor de Métricas -->
         <div class="metric-selector">
             <label><input type="checkbox" id="total-vendas" class="metric-checkbox" checked> Total de Vendas</label>
             <label><input type="checkbox" id="total-pedidos" class="metric-checkbox"> Total de Pedidos</label>
@@ -127,9 +79,40 @@
             <label><input type="checkbox" id="reembolso" class="metric-checkbox"> Reembolsos</label>
         </div>
 
+        <!-- Modal de Alerta para seleção das métricas-->
+        <div class="modal fade" id="alertaModal" tabindex="-1" role="dialog" aria-labelledby="alertaModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="alertaModalLabel">Alerta</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="alertaModalBody">
+                        <!-- Texto do alerta inserido dinamicamente via JS -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Gráfico de Desempenho -->
         <canvas id="performanceChart"></canvas>
+    </div>
 
-        <!-- JavaScript -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="../js/analiseDesempenho.js"></script>
+    <!-- Scripts JavaScript do Bootstrap e dependências -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Scripts JavaScript Personalizados -->
+    <script src="../js/menuHeader.js"></script>
+    <script src="../js/libs/chart.umd.js"></script>
+    <script src="../js/analiseDesempenho.js"></script>
+
+</body>
+
+</html>

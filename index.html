@@ -4,102 +4,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autenticação - Área Financeira</title>
+    <title>Autenticação</title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-        rel="stylesheet">
-
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
     <!-- CSS Personalizado -->
-    <link rel="stylesheet" href="./assets/css/telaAutenticacao.css">
+    <link rel="stylesheet" href="./assets/css/autenticacao.css">
 </head>
 
 <body>
-    <div class="d-flex flex-column vh-100">
+    <!-- Cabeçalho com logo do iFood -->
+    <header class="auth-header">
+        <div class="auth-header-content">
+            <a href="https://www.ifood.com.br">
+                <img src="./assets/images/logoIfoodBranco.png" alt="iFood" class="auth-logo">
+            </a>
+        </div>
+    </header>
 
-        <!-- Header superior vermelha -->
-        <header style="background-color: #BF000E; height: 8%;">
-            <div class="d-flex align-items-center h-100" style="padding-left: 10%;">
-                <a href="https://www.ifood.com.br">
-                    <img src="./assets/images/logoIfoodBranco.png" alt="iFood" class="logo">
-                </a>
-            </div>
-        </header>
-        <main class="container-fluid d-flex justify-content-between align-items-center flex-grow-1">
-            <div class="intro-text">
-                <h5 class="text-muted">Verificação em 2 etapas</h5>
-                <h1 style="font-size: 2rem; line-height: 1.5;">Para acessar a sessão financeira, escolha um método de
-                    verificação para confirmar que a conta pertence a você.</h1>
-            </div>
-            <section class="card p-4 shadow-sm verification-card">
-                <!-- Seção de opções de verificação -->
-                <div id="verification-options">
-                    <div class="card-option mb-3 d-flex align-items-center" id="qr-option">
-                        <img src="./assets/images/qrCode.png" alt="Código QR" style="height: 40px;" class="mr-3">
-                        <div>
-                            <h5 class="mb-0">Código QR</h5>
-                            <p class="text-muted small">Você vai escanear o código QR com o app do iFood.</p>
-                        </div>
-                    </div>
-                    <div class="card-option d-flex align-items-center" id="face-recognition-option">
-                        <img src="./assets/images/reconhecimentoFacial.png" alt="Reconhecimento Facial"
-                            style="height: 40px;" class="mr-3">
-                        <div>
-                            <h5 class="mb-0">Reconhecimento Facial</h5>
-                            <p class="text-muted small">Vamos usar a câmera do seu computador para reconhecer seu rosto.
-                            </p>
-                        </div>
+    <!-- Container principal da tela de autenticação -->
+    <div class="auth-container">
+        <div class="auth-left">
+            <!-- Instruções sobre o processo de verificação -->
+            <h5 class="text-muted">Verificação em 2 etapas</h5>
+            <h1>Para acessar a sessão financeira, escolha um método de verificação para confirmar que a conta pertence a
+                você.</h1>
+        </div>
+        <div class="auth-right">
+            <!-- Opções de verificação: QR Code e Reconhecimento Facial -->
+            <div id="verification-options" class="verification-card">
+                <div class="qr-code-option card-option" id="qr-option">
+                    <img src="./assets/images/qrCode.png" alt="Código QR" class="qr-code-img">
+                    <div>
+                        <h5 class="mb-0">Código QR</h5>
+                        <p class="text-muted small">Você vai escanear o código QR com o app do iFood.</p>
                     </div>
                 </div>
-                <!-- Seção de simulação de reconhecimento facial -->
-                <div id="face-recognition-section" style="display: none; text-align: center;">
-                    <h5>Posicione seu rosto em frente à câmera</h5>
-                    <div id="face-recognition-animation" class="loading-animation"></div>
-                    <p class="text-muted small">Verificando...</p>
+                <div class="face-recognition-option card-option" id="face-recognition-option">
+                    <img src="./assets/images/reconhecimentoFacial.png" alt="Reconhecimento Facial"
+                        class="face-recognition-img">
+                    <div>
+                        <h5 class="mb-0">Reconhecimento Facial</h5>
+                        <p class="text-muted small">Vamos usar a câmera do seu computador para reconhecer seu rosto.</p>
+                    </div>
                 </div>
+            </div>
 
-                <!-- Nova seção para exibição do código QR -->
-                <div id="qr-code-section" style="display: none; text-align: center;">
-                    <h5>Escaneie este código QR para continuar:</h5>
-                    <img src="./assets/images/qrCode.png" alt="Código QR" style="max-width: 200px;">
-                    <div id="qr-code-animation" class="loading-animation mt-3"></div>
-                    <p class="text-muted mt-3">Lendo QR Code...</p>
-                </div>
-            </section>
-        </main>
+            <!-- Simulação de reconhecimento facial -->
+            <div id="face-recognition-section" class="auth-simulation-section">
+                <h5>Posicione seu rosto em frente à câmera</h5>
+                <div class="loading-animation"></div> <!-- Animação de carregamento -->
+                <p class="text-muted small">Verificando...</p>
+            </div>
+
+            <!-- Simulação do QR Code -->
+            <div id="qr-code-section" class="auth-simulation-section">
+                <h5>Escaneie este código QR para continuar</h5>
+                <img src="./assets/images/qrCode.png" alt="Código QR" class="qr-code-img-large">
+                <div id="qr-code-animation" class="loading-animation mt-3"></div>
+                <p class="text-muted mt-3">Lendo QR Code...</p>
+            </div>
+        </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal de sucesso da autenticação -->
     <div class="modal fade" id="customModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalLabel">Verificação Concluída</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     Autenticação concluída com sucesso.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="continueButton">Continuar</button>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <!-- Bootstrap JS e dependências -->
+    <!-- Scripts JavaScript do Bootstrap e dependências -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Script JS personalizado -->
-    <script src="./assets/js/telaAutenticacao.js"></script>
+
+    <!-- Scripts JavaScript Personalizados -->
+    <script src="./assets/js/autenticacao.js"></script>
+
 </body>
 
 </html>

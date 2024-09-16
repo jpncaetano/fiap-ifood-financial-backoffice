@@ -4,68 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financeiro - Meu Restaurante</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-        rel="stylesheet">
+    <title>Transações</title>
 
     <!-- CSS Personalizado -->
-    <link rel="stylesheet" href="../css/transacoes.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/modalAndCharts.css">
 </head>
+
 <body>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <a href="/index.html">
-            <img src="../images/logoIfoodVermelho.png" alt="iFood" class="logo">
-        </a>
-        <ul class="nav flex-column">
-            <!-- Nome do Restaurante -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">Restaurante do João</a>
-            </li>
-
-            <!-- Status da Loja -->
-            <li class="nav-item">
-                <div class="status-box">
-                    <span class="status-circle"></span>
-                    <div class="status-text">
-                        <span class="status-label">Loja aberta</span>
-                        <span class="status-description">Dentro do horário programado</span>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Menu Financeiro -->
-            <li class="nav-item">
-                <span class="nav-link menu-pai">Financeiro</span>
-                <ul class="submenu">
-                    <li><a class="nav-link" href="./visaoGeral.html">Visão Geral</a></li>
-                    <li><a class="nav-link" href="./analiseDesempenho.html">Análise de Desempenho</a></li>
-                    <li><a class="nav-link active" href="./transacoes.html">Transações</a></li>
-                    <li><a class="nav-link" href="./nfe.html">NF-e</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+    <!-- Menu e Header carregados dinamicamente -->
+    <div id="menuHeader"></div>
 
     <!-- Conteúdo Principal -->
     <div class="main-content">
-        <div class="header-container">
-            <h1>Financeiro</h1>
-
-            <!-- Seletor de Período -->
-            <div class="period-container">
-                <label for="periodo">Período dos Dados:</label>
-                <input type="date" id="periodo" name="periodo" class="date-picker">
-            </div>
-        </div>
+        <div class="header-container"></div>
         <div class="description">
             <h3>Transações</h3>
         </div>
@@ -86,12 +38,13 @@
             </div>
         </div>
 
-        <!-- Modal de saque -->
-        <div id="modalSaque" class="modal" tabindex="-1" role="dialog">
+        <!-- Modal de Saque -->
+        <div id="modalSaque" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalSaqueLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Saque</h5>
+                        <h5 class="modal-title" id="modalSaqueLabel">Saque</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -99,11 +52,31 @@
                     <div class="modal-body">
                         <label for="valorSaque">Qual valor deseja sacar?</label>
                         <input type="number" id="valorSaque" class="form-control" placeholder="Insira o valor do saque">
-                        <p id="mensagemErro" style="color: red; display: none;">Saldo insuficiente!</p>
+                        <p id="erroSaque" style="color: red; display: none;">Saldo insuficiente!</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="confirmarSaque">Sacar</button>
+                        <button type="button" class="btn btn-primary" id="btnConfirmarSaque">Sacar</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Alertas (Insira valor válido/ Concluído)-->
+        <div id="modalAlerta" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalAlertaTitulo">Alerta</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="modalAlertaMensagem"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>
             </div>
@@ -123,7 +96,7 @@
                 <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Buscar transações...">
             </div>
 
-            <!-- Tabela de Transações -->
+            <!-- Corpo da Tabela -->
             <table class="table">
                 <thead>
                     <tr>
@@ -140,55 +113,55 @@
                         <td>Renda do Pedido #0001</td>
                         <td>0001</td>
                         <td>Entrada</td>
-                        <td>+R$76,03</td>
+                        <td class="positive">+R$76,03</td>
                     </tr>
                     <tr>
                         <td>15/05/2024</td>
                         <td>Renda do Pedido #0002</td>
                         <td>0002</td>
                         <td>Entrada</td>
-                        <td>+R$32,57</td>
+                        <td class="positive">+R$32,57</td>
                     </tr>
                     <tr>
                         <td>14/05/2024</td>
                         <td>Renda do Pedido #0003</td>
                         <td>0003</td>
                         <td>Entrada</td>
-                        <td>+R$43,14</td>
+                        <td class="positive">+R$43,14</td>
                     </tr>
                     <tr>
                         <td>13/05/2024</td>
                         <td>Renda do Pedido #0004</td>
                         <td>0004</td>
                         <td>Entrada</td>
-                        <td>+R$89,37</td>
+                        <td class="positive">+R$89,37</td>
                     </tr>
                     <tr>
                         <td>12/05/2024</td>
                         <td>Saque para conta Nubank **** 1234</td>
-                        <td>0005</td>
+                        <td>Saque</td>
                         <td>Saída</td>
-                        <td>-R$3.000,00</td>
+                        <td class="neutral">-R$3.000,00</td>
                     </tr>
                     <tr>
                         <td>11/05/2024</td>
-                        <td>Renda do Pedido #0005</td>
+                        <td>Renda do Pedido #0006</td>
                         <td>0006</td>
                         <td>Entrada</td>
-                        <td>+R$52,87</td>
+                        <td class="positive">+R$52,87</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-
-        <!-- Bootstrap -->
+        <!-- Scripts JavaScript do Bootstrap e dependências -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        <!-- JavaScript -->
-        <script src="/assets/js/transacoes.js"></script>
+        <!-- Scripts JavaScript Personalizados -->
+        <script src="../js/menuHeader.js"></script>
+        <script src="../js/transacoes.js"></script>
 
 </body>
 

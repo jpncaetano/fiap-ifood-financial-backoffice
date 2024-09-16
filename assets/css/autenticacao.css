@@ -1,0 +1,191 @@
+/* Configurações gerais de estilo */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Header */
+.auth-header {
+    background-color: #BF000E;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    padding-left: 10%;
+}
+
+/* Logo */
+.auth-logo {
+    max-height: 5vh;
+    width: auto;
+    cursor: pointer;
+}
+
+/* Container principal que ocupa 100% da largura e centralizado */
+.auth-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 70vh;
+    margin: 0 auto;
+    padding: 0 10%;
+}
+
+/* Estilos para o container da esquerda (textos) */
+.auth-left {
+    width: 50%;
+}
+
+/* Estilos para o container da direita (cards) */
+.auth-right {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo dos Cards de Verificação */
+.verification-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px 20px;
+    width: 100%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo das opções dentro dos Cards */
+.card-option {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.card-option:hover {
+    background-color: #f0f0f0;
+}
+
+.card-option img {
+    margin-right: 10px;
+}
+
+/* Modal */
+.modal-header {
+    background-color: #BF000E;
+    color: #fff;
+}
+
+/* Animação do login */
+.loading-animation {
+    width: 50px;
+    height: 50px;
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #BF000E;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+    margin: 0 auto;
+}
+
+/* Imagem do QR Code */
+.qr-code-img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Imagem do Reconhecimento Facial */
+.face-recognition-img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Seções de simulação (face-recognition e qr-code) */
+.auth-simulation-section {
+    display: none;
+    text-align: center;
+}
+
+/* Imagem do QR Code do modal */
+.qr-code-img-large {
+    max-width: 200px;
+}
+
+/* Animação de rotação */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Media Queries para telas menores que 1200px (desktops grandes) */
+@media (max-width: 1200px) {
+    .auth-container {
+        padding: 30px;
+    }
+
+    .auth-left,
+    .auth-right {
+        width: 48%; /* Mantido o mesmo valor, mas ajustável se necessário */
+    }
+
+    .auth-logo {
+        max-height: 5vh;
+    }
+}
+
+/* Media Queries para telas menores que 992px (tablets e telas intermediárias) */
+@media (max-width: 992px) {
+    .auth-container {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .auth-left,
+    .auth-right {
+        width: 100%; /* Layout vertical */
+    }
+
+    .auth-logo {
+        max-height: 4vh;
+    }
+}
+
+/* Media Queries para telas menores que 768px (tablets e smartphones) */
+@media (max-width: 768px) {
+    .auth-container {
+        padding: 20px;
+    }
+
+    .verification-card {
+        width: 100%; /* Já ajustado, não precisa de mudança adicional */
+    }
+}
+
+/* Media Queries para telas menores que 480px (smartphones) */
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 10px;
+        height: auto;
+    }
+
+    .auth-logo {
+        max-height: 3vh;
+    }
+
+    .card-option img {
+        height: 30px;
+    }
+
+    .qr-code-img-large {
+        max-width: 150px;
+    }
+
+    .verification-card {
+        padding: 20px;
+    }
+}
+
