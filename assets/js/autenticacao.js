@@ -12,7 +12,7 @@ function openModal() {
 
     // Redireciona para "Visão Geral" após 1,5 segundos
     setTimeout(function() {
-        window.location.href = '/assets/pages/visaoGeral.html';
+        window.location.href = './assets/pages/visaoGeral.html';
     }, 1500);
 }
 
