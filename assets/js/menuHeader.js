@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     
     // Carrega o menu e cabeçalho
-    fetch('/assets/components/menuHeader.html')
+    fetch('../components/menuHeader.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('menuHeader').innerHTML = data;
