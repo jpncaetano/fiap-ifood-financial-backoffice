@@ -1,7 +1,7 @@
 # 🛠️ iFood Financial Backoffice  
 
 📌 **Descrição**  
-Este projeto é uma interface web desenvolvida para facilitar a gestão financeira dos parceiros do **iFood**, permitindo que eles visualizem aldos, transações, pedidos e relatórios de forma simples e intuitiva.  
+Este projeto é uma interface web desenvolvida para facilitar a gestão financeira dos parceiros do **iFood**, permitindo que eles visualizem saldos, transações, pedidos e relatórios de forma simples e intuitiva.  
 
 A solução recria uma tela de backoffice financeiro para parceiros do iFood utilizando apenas **HTML, CSS, Bootstrap e JavaScript**, sem banco de dados ou back-end.  
 
